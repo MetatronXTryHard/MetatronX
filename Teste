@@ -108,14 +108,14 @@ M:AddSlider({
     Increase = 1,
     Default = 60,
     Callback = function(Value)
-        getgenv().Speed = Value;
+        getgenv().Power = Value;
         local mt = getrawmetatable(game)
         local old = mt.__newindex
         setreadonly(mt, false)
         mt.__newindex = newcclosure(function(t,k,v)
           pcall(function()
             if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "JumpPower" then
-              v = getgenv().Speed;
+              v = getgenv().Power;
             end
           end)
           return old(t,k,v)
