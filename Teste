@@ -6,13 +6,13 @@ function topos(Pos)
         game.Players.LocalPlayer.Character.Humanoid.Sit = false
     end
 
-    local tweenSpeed = TweeSpeed or 65  -- Use o valor TweeSpeed. Se disponível, use o valor padrão de 250.
+    local tweenSpeed = TweeSpeed or 85  -- Use o valor TweeSpeed. Se disponível, use o valor padrão de 250.
     local tweenInfo = TweenInfo.new(Distance / tweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
     local tween = game:GetService("TweenService"):Create(humanoidRootPart, tweenInfo, { CFrame = Pos })
 
     tween:Play()
 
-    if Distance <= 65 then
+    if Distance <= 85 then
         tween:Cancel()
         humanoidRootPart.CFrame = Pos
     end
@@ -39,6 +39,8 @@ function StopTween(target)
     end
 end
 
+--Tween & StopTween
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/Teste"))()
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
 local Window = redzlib:MakeWindow({
   Title = "Testing System Bypass | Grand Piece Online",
@@ -78,11 +80,11 @@ local Button = M:AddButton({"Sandora Bypass Teste", function(TS)
         -- Serve Pro Tween Nao Ativar Sem A Funcao estar ligada
     end   
 end})
-local Paragraph = M:AddParagraph({"☠ AVISO ❕", "Essas Funcoes Sao Por Sua Conta Em Risco\nValores Acima de 115 Podem calsar ban Por Deteccao"})
+local Paragraph = M:AddParagraph({"☠ AVISO ❕", "Essas Funcoes Sao Por Sua Conta Em Risco\nValores Acima de 100 Podem calsar ban Por Deteccao"})
 M:AddSlider({
     Name = "WalkSpeed Bypass",
     Min = 16,
-    Max = 115,
+    Max = 100,
     Increase = 1,
     Default = 16,
     Callback = function(Value)
@@ -103,7 +105,7 @@ M:AddSlider({
   M:AddSlider({
     Name = "JumpPower Bypass",
     Min = 60,
-    Max = 115,
+    Max = 100,
     Increase = 1,
     Default = 60,
     Callback = function(Value)
@@ -121,3 +123,24 @@ M:AddSlider({
         end)
     end
   })
+  local Button = M:AddButton({"Infinity Bypass", function(value)
+    _G.infinjump = not _G.infinjump
+
+    if _G.infinJumpStarted == nil then
+      --Ensures this only runs once to save resources
+      _G.infinJumpStarted = true
+   --The actual infinite jump
+      local plr = game:GetService('Players').LocalPlayer
+      local m = plr:GetMouse()
+      m.KeyDown:connect(function(k)
+        if _G.infinjump then
+          if k:byte() == 32 then
+          humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+          humanoid:ChangeState('Jumping')
+          wait()
+          humanoid:ChangeState('Seated')
+          end
+        end
+      end)
+    end
+end})
