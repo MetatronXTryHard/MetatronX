@@ -1,0 +1,40 @@
+function topos(Pos)
+    local humanoidRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local Distance = (Pos.Position - humanoidRootPart.Position).Magnitude
+
+    if game.Players.LocalPlayer.Character.Humanoid.Sit then
+        game.Players.LocalPlayer.Character.Humanoid.Sit = false
+    end
+
+    local tweenSpeed = TweeSpeed or 250  -- Use o valor TweeSpeed. Se disponível, use o valor padrão de 250.
+    local tweenInfo = TweenInfo.new(Distance / tweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+    local tween = game:GetService("TweenService"):Create(humanoidRootPart, tweenInfo, { CFrame = Pos })
+
+    tween:Play()
+
+    if Distance <= 250 then
+        tween:Cancel()
+        humanoidRootPart.CFrame = Pos
+    end
+
+    if _G.StopTween then
+        tween:Cancel()
+        _G.Clip = false
+    end
+end
+function StopTween(target)
+    if not target then
+        _G.StopTween = true
+        wait()
+        topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+        wait()
+        if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+        end
+        _G.StopTween = false
+        _G.Clip = false
+    end
+    if game.Players.LocalPlayer.Character:FindFirstChild('Highlight') then
+        game.Players.LocalPlayer.Character:FindFirstChild('Highlight'):Destroy()
+    end
+end
