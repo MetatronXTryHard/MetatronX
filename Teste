@@ -6,7 +6,7 @@ function topos(Pos)
       game.Players.LocalPlayer.Character.Humanoid.Sit = false
   end
 
-  local tweenSpeed = TweeSpeed or 85  -- Use o valor TweeSpeed. Se disponível, use o valor padrão de 250.
+  local tweenSpeed = TweeSpeed or 85  -- Use o valor TweeSpeed. Se disponível, use o valor padrão de 250 Para Bloxfruis, Mais Em Outros Casos como GPO O Maximo e 85 pra nao dar flag.
   local tweenInfo = TweenInfo.new(Distance / tweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
   local tween = game:GetService("TweenService"):Create(humanoidRootPart, tweenInfo, { CFrame = Pos })
 
