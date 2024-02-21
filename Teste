@@ -81,7 +81,7 @@ end})
 M:AddSlider({
     Name = "WalkSpeed Bypass",
     Min = 16,
-    Max = 150,
+    Max = 125,
     Increase = 1,
     Default = 16,
     Callback = function(Value)
@@ -101,10 +101,10 @@ M:AddSlider({
   })
   M:AddSlider({
     Name = "JumpPower Bypass",
-    Min = 60,
-    Max = 150,
+    Min = 55,
+    Max = 100,
     Increase = 1,
-    Default = 60,
+    Default = 55,
     Callback = function(Value)
         getgenv().Speed = Value;
         local mt = getrawmetatable(game)
