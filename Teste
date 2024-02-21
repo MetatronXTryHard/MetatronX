@@ -78,10 +78,11 @@ local Button = M:AddButton({"Sandora Bypass Teste", function(TS)
         -- Serve Pro Tween Nao Ativar Sem A Funcao estar ligada
     end   
 end})
+local Paragraph = M:AddParagraph({"☠ AVISO ❕", "Essas Funcoes Sao Por Sua Conta Em Risco\nValores Acima de 125 Podem calsar ban"})
 M:AddSlider({
     Name = "WalkSpeed Bypass",
     Min = 16,
-    Max = 125,
+    Max = 150,
     Increase = 1,
     Default = 16,
     Callback = function(Value)
@@ -101,10 +102,10 @@ M:AddSlider({
   })
   M:AddSlider({
     Name = "JumpPower Bypass",
-    Min = 55,
-    Max = 100,
+    Min = 60,
+    Max = 125,
     Increase = 1,
-    Default = 55,
+    Default = 60,
     Callback = function(Value)
         getgenv().Speed = Value;
         local mt = getrawmetatable(game)
