@@ -38,3 +38,85 @@ function StopTween(target)
         game.Players.LocalPlayer.Character:FindFirstChild('Highlight'):Destroy()
     end
 end
+
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
+local Window = redzlib:MakeWindow({
+  Title = "Testing System Bypass | Grand Piece Online",
+  SubTitle = "By MTX Team",
+  SaveFolder = "Teste.lua"
+})
+Window:AddMinimizeButton({
+  Button = {
+    -- Button Properties
+    Image = "rbxassetid://16269686129"
+  },
+  UICorner = {true,
+    -- Corner Properties
+    CornerRadius = UDim.new(0.5, 0)
+  },
+  UIStroke = {false, {
+    -- Stroke Properties
+  }}
+})
+local M = Window:MakeTab({"Main", "moon"})
+--Final
+local Button = M:AddButton({"Stop All Tween", function()
+    topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+    _G.Clip = false  
+end})
+local Button = M:AddButton({"Ilha Inicial Exemple Bypass", function(TS)
+    Tween = TS
+    if Tween then
+        topos(CFrame.new(956, 7, 1033)) 
+        -- Serve Pro Tween Nao Ativar Sem A Funcao estar ligada
+    end   
+end})
+local Button = M:AddButton({"Sandora Bypass Teste", function(TS)
+    Tween = TS
+    if Tween then
+        topos(CFrame.new(-1299, 10, 1156)) 
+        -- Serve Pro Tween Nao Ativar Sem A Funcao estar ligada
+    end   
+end})
+M:AddSlider({
+    Name = "WalkSpeed Bypass",
+    Min = 16,
+    Max = 150,
+    Increase = 1,
+    Default = 16,
+    Callback = function(Value)
+        getgenv().Speed = Value;
+        local mt = getrawmetatable(game)
+        local old = mt.__newindex
+        setreadonly(mt, false)
+        mt.__newindex = newcclosure(function(t,k,v)
+          pcall(function()
+            if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "WalkSpeed" then
+              v = getgenv().Speed;
+            end
+          end)
+          return old(t,k,v)
+        end)
+    end
+  })
+  M:AddSlider({
+    Name = "JumpPower Bypass",
+    Min = 60,
+    Max = 150,
+    Increase = 1,
+    Default = 60,
+    Callback = function(Value)
+        getgenv().Speed = Value;
+        local mt = getrawmetatable(game)
+        local old = mt.__newindex
+        setreadonly(mt, false)
+        mt.__newindex = newcclosure(function(t,k,v)
+          pcall(function()
+            if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "JumpPower" then
+              v = getgenv().Speed;
+            end
+          end)
+          return old(t,k,v)
+        end)
+    end
+  })
