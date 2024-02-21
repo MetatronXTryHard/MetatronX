@@ -78,11 +78,11 @@ local Button = M:AddButton({"Sandora Bypass Teste", function(TS)
         -- Serve Pro Tween Nao Ativar Sem A Funcao estar ligada
     end   
 end})
-local Paragraph = M:AddParagraph({"☠ AVISO ❕", "Essas Funcoes Sao Por Sua Conta Em Risco\nValores Acima de 125 Podem calsar ban"})
+local Paragraph = M:AddParagraph({"☠ AVISO ❕", "Essas Funcoes Sao Por Sua Conta Em Risco\nValores Acima de 115 Podem calsar ban Por Deteccao"})
 M:AddSlider({
     Name = "WalkSpeed Bypass",
     Min = 16,
-    Max = 150,
+    Max = 115,
     Increase = 1,
     Default = 16,
     Callback = function(Value)
@@ -103,7 +103,7 @@ M:AddSlider({
   M:AddSlider({
     Name = "JumpPower Bypass",
     Min = 60,
-    Max = 125,
+    Max = 115,
     Increase = 1,
     Default = 60,
     Callback = function(Value)
