@@ -6,7 +6,7 @@ function topos(Pos)
         game.Players.LocalPlayer.Character.Humanoid.Sit = false
     end
 
-    local tweenSpeed = TweeSpeed or 250  -- Use o valor TweeSpeed. Se disponível, use o valor padrão de 250.
+    local tweenSpeed = TweeSpeed or 60  -- Use o valor TweeSpeed. Se disponível, use o valor padrão de 250.
     local tweenInfo = TweenInfo.new(Distance / tweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
     local tween = game:GetService("TweenService"):Create(humanoidRootPart, tweenInfo, { CFrame = Pos })
 
