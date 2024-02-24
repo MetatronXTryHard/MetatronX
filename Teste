@@ -22,12 +22,7 @@ local M = Window:MakeTab({"Main", "moon"})
 local P = Window:MakeTab({"Local Player", "user"})
 local MC = Window:MakeTab({"Misc.", "more-horizontal"})
 
-local AutoParry = M:AddToggle({
-  Name = "Auto Parry [In Dev]",
-  Description = "",
-  Default = false
-})
-AutoParry:Callback(function()
+local Button = M:AddButton({"Auto Parry [In Dev]", function()
   local Debug = false -- Set this to true if you want my debug output.
   local ReplicatedStorage = game:GetService("ReplicatedStorage")
   local Players = game:GetService("Players")
@@ -91,5 +86,4 @@ AutoParry:Callback(function()
           end
       end)
   end)
-end)
-print("MTX Client Was Be Loaded")
+end})
