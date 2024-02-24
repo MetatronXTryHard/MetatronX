@@ -75,12 +75,12 @@ local Button = M:AddButton({"Auto Parry [In Dev]", function()
               
               print(`Distance: {Distance}\nVelocity: {Velocity}\nTime: {Distance / Velocity}`)
           
-              if (Distance / Velocity) <= 10 then -- Sorry for the magic number. This just works. No, you don't get a slider for this because it's 2am.
+              if (Distance / Velocity) <= 11 then -- Sorry for the magic number. This just works. No, you don't get a slider for this because it's 2am.
                   Parry()
               end
           end
           
-          if (tick() - OldTick >= 2/60) then -- Don't want it to update too quickly because my velocity implementation is aids. Yes, I tried Ball.Velocity. No, it didn't work.
+          if (tick() - OldTick >= 1/60) then -- Don't want it to update too quickly because my velocity implementation is aids. Yes, I tried Ball.Velocity. No, it didn't work.
               OldTick = tick()
               OldPosition = Ball.Position
           end
@@ -92,7 +92,7 @@ local Toggle = M:AddToggle({"Auto Spam Parry [In Dev]", false, function(value)
     task.wait()
     local ball = workspace.Balls:FindFirstChildWhichIsA("BasePart")
     local hum = game.Players.LocalPlayer.Character
-    local balldist = 9
+    local balldist = 8
     if ball then
     local dist = (ball.Position - hum.HumanoidRootPart.position).Magnitude
     if dist <= balldist and hum:FindFirstChild("Highlight") then
@@ -100,4 +100,13 @@ local Toggle = M:AddToggle({"Auto Spam Parry [In Dev]", false, function(value)
     end
     end
     end
+end})
+local AutoParry2 = M:AddToggle({"Auto Spam Parry [In Dev]", false, function(value)
+  getgenv().ScriptConfig = {
+    -- Distance in stud before the automatic triggers,
+    -- you may change even after you have ran the script if you desire!
+    -- Just be sure to REMOVE the loadstring, or else you will face some... issues
+  DistanceBeforeParry = 46,
+  }
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/Sussy-Tech/Scripts/main/BladeBall.lua"))()
 end})
