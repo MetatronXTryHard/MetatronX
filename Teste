@@ -203,60 +203,17 @@ local Toggle = M:AddToggle({"Auto Spam Parry [In Dev]", false, function(value)
   end)
 end})
 
-local MTX = M:AddToggle({"Auto Parry Recode Teste", false, function(value)
-getgenv().Paws = {
-  ["AutoParry"] = true,
-  ["PingBased"] = true,
-  ["PingBasedOffset"] = 0,
-  ["DistanceToParry"] = 0.5,
-  ["BallSpeedCheck"] = true,
-}
-
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer or Players.PlayerAdded:Wait()
-local ReplicatedPaw = game:GetService("ReplicatedStorage")
-
-local Paws = ReplicatedPaw:WaitForChild("Remotes", 9e9)
-local PawsBalls = workspace:WaitForChild("Balls", 9e9)
-local PawsTable = getgenv().Paws
-
-local function IsTheTarget()
-  return Player.Character:FindFirstChild("Highlight")
-end
-
-local function FindBall()
-local RealBall
-for i, v in pairs(PawsBalls:GetChildren()) do
-  if v:GetAttribute("realBall") == true then
-      RealBall = v
-  end
-end
-return RealBall
-end
-
-game:GetService("RunService").PreRender:connect(function()
-  if not FindBall() then 
-          return
-  end
-  local Ball = FindBall()
-  
-  local BallPosition = Ball.Position
-  
-  local BallVelocity = Ball.AssemblyLinearVelocity.Magnitude
-  
-  local Distance = Player:DistanceFromCharacter(BallPosition)
-  
-  local Ping = BallVelocity * (game.Stats.Network.ServerStatsItem["Data Ping"]:GetValue() / 1000)
-  
-  if PawsTable.PingBased then
-  Distance -= Ping + PawsTable.PingBasedOffset
-  end
-  
-  if PawsTable.BallSpeedCheck and BallVelocity == 0 then return
-  end
-  
-  if (Distance / BallVelocity) <= PawsTable.DistanceToParry and IsTheTarget() and PawsTable.AutoParry then
-         Paws:WaitForChild("ParryButtonPress"):Fire()
-     end
-end)
+local MTX = M:AddToggle({"Auto Spam Recode Teste", false, function(value)
+  while true do
+    task.wait()
+    local ball = workspace.Balls:FindFirstChildWhichIsA("BasePart")
+    local hum = game.Players.LocalPlayer.Character
+    local balldist = 6
+    if ball then
+    local dist = (ball.Position - hum.HumanoidRootPart.position).Magnitude
+    if dist <= balldist and hum:FindFirstChild("Highlight") then
+    keypress(0x46)
+    end
+    end
+    end
 end})
