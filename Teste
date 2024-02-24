@@ -1,4 +1,23 @@
---Tween & StopTween
+function To(position)
+  _G.Tp = (Vector3.new(position.x, position.y, position.z))
+  spawn(function()
+  local Chr = Plr.Character
+  if Chr ~= nil then
+  local ts = game:GetService("TweenService")
+  local char = game.Players.LocalPlayer.Character
+  local hm = char.HumanoidRootPart
+  _G.YPos = hm.Position.y + 10
+  local dist = (hm.Position - position).magnitude
+  local tweenspeed = dist/tonumber(_G.speed*10)
+  local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
+  local tp = {CFrame = CFrame.new(position)}
+  _G.TweenThing = ts:Create(hm, ti, tp)
+  _G.TweenThing:Play()
+  wait(tonumber(tweenspeed))
+  _G.TweenThing = nil
+  end
+  end)
+  end
 function topos(Pos)
   local humanoidRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
   local Distance = (Pos.Position - humanoidRootPart.Position).Magnitude
@@ -7,13 +26,13 @@ function topos(Pos)
       game.Players.LocalPlayer.Character.Humanoid.Sit = false
   end
 
-  local tweenSpeed = TweeSpeed or 95  -- Use o valor TweeSpeed. Se disponível, use o valor padrão de 250.
+  local tweenSpeed = TweeSpeed or 65  -- Use o valor TweeSpeed. Se disponível, use o valor padrão de 250.
   local tweenInfo = TweenInfo.new(Distance / tweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
   local tween = game:GetService("TweenService"):Create(humanoidRootPart, tweenInfo, { CFrame = Pos })
 
   tween:Play()
 
-  if Distance <= 95 then
+  if Distance <= 65 then
       tween:Cancel()
       humanoidRootPart.CFrame = Pos
   end
@@ -80,6 +99,14 @@ local Button = M:AddButton({"Sandora Bypass Teste", function(TS)
         topos(CFrame.new(-1299, 10, 1156)) 
         -- Serve Pro Tween Nao Ativar Sem A Funcao estar ligada
     end   
+end})
+local Button = M:AddButton({"teste 2 Bypass Teste", function(TS)
+  Tween = TS
+  if Tween then
+    _G.ResponseX = 5600
+    _G.ResponseZ = -16400
+    To(Vector3.new(_G.ResponseX, 10, _G.ResponseZ))
+  end   
 end})
 local Paragraph = M:AddParagraph({"☠ AVISO ❕", "Essas Funcoes Sao Por Sua Conta Em Risco\nValores Acima de 100 Podem calsar ban Por Deteccao"})
 M:AddSlider({
