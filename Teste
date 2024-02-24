@@ -1,77 +1,8 @@
-
-
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/Teste"))()
-
-
-
-
-function To(position)
-  _G.Tp = (Vector3.new(position.x, position.y, position.z))
-  spawn(function()
-  local Chr = Plr.Character
-  if Chr ~= nil then
-  local ts = game:GetService("TweenService")
-  local char = game.Players.LocalPlayer.Character
-  local hm = char.HumanoidRootPart
-  _G.YPos = hm.Position.y + 10
-  local dist = (hm.Position - position).magnitude
-  local tweenspeed = dist/tonumber(_G.speed*10)
-  local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
-  local tp = {CFrame = CFrame.new(position)}
-  _G.TweenThing = ts:Create(hm, ti, tp)
-  _G.TweenThing:Play()
-  wait(tonumber(tweenspeed))
-  _G.TweenThing = nil
-  end
-  end)
-  end
-function topos(Pos)
-  local humanoidRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-  local Distance = (Pos.Position - humanoidRootPart.Position).Magnitude
-
-  if game.Players.LocalPlayer.Character.Humanoid.Sit then
-      game.Players.LocalPlayer.Character.Humanoid.Sit = false
-  end
-
-  local tweenSpeed = TweeSpeed or 65  -- Use o valor TweeSpeed. Se disponível, use o valor padrão de 250.
-  local tweenInfo = TweenInfo.new(Distance / tweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-  local tween = game:GetService("TweenService"):Create(humanoidRootPart, tweenInfo, { CFrame = Pos })
-
-  tween:Play()
-
-  if Distance <= 65 then
-      tween:Cancel()
-      humanoidRootPart.CFrame = Pos
-  end
-
-  if _G.StopTween then
-      tween:Cancel()
-      _G.Clip = false
-  end
-end
-function StopTween(target)
-  if not target then
-      _G.StopTween = true
-      wait()
-      topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-      wait()
-      if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-          game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
-      end
-      _G.StopTween = false
-      _G.Clip = false
-  end
-  if game.Players.LocalPlayer.Character:FindFirstChild('Highlight') then
-      game.Players.LocalPlayer.Character:FindFirstChild('Highlight'):Destroy()
-  end
-end
--- Script
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
 local Window = redzlib:MakeWindow({
-  Title = "Testing System Bypass | Grand Piece Online",
-  SubTitle = "By MTX Team",
-  SaveFolder = "Teste.lua"
+  Title = "🥋 MTX Client Dev Build | Blade Ball 👑",
+  SubTitle = "By MTX Team | V2.5",
+  SaveFolder = "MTX Client Save.lua"
 })
 Window:AddMinimizeButton({
   Button = {
@@ -87,93 +18,71 @@ Window:AddMinimizeButton({
   }}
 })
 local M = Window:MakeTab({"Main", "moon"})
-local Paragraph = M:AddParagraph({"Ultra Bypass Anticheat ☠☠☠", "Coded By: ChatGPT..."})
+local P = Window:MakeTab({"Local Player", "user"})
+local MC = Window:MakeTab({"Misc.", "more-horizontal"})
 
---Final
-local Button = M:AddButton({"Stop All Tween", function()
-    topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-    _G.Clip = false  
-end})
-local Button = M:AddButton({"Ilha Inicial Exemple Bypass", function(TS)
-    Tween = TS
-    if Tween then
-        topos(CFrame.new(956, 7, 1033)) 
-        -- Serve Pro Tween Nao Ativar Sem A Funcao estar ligada
-    end   
-end})
-local Button = M:AddButton({"Sandora Bypass Teste", function(TS)
-    Tween = TS
-    if Tween then
-        topos(CFrame.new(-1299, 10, 1156)) 
-        -- Serve Pro Tween Nao Ativar Sem A Funcao estar ligada
-    end   
-end})
-local Button = M:AddButton({"teste 2 Bypass Teste", function(TS)
-  Tween = TS
-  if Tween then
-    _G.ResponseX = 5600
-    _G.ResponseZ = -16400
-    To(Vector3.new(_G.ResponseX, 10, _G.ResponseZ))
-  end   
-end})
-local Paragraph = M:AddParagraph({"☠ AVISO ❕", "Essas Funcoes Sao Por Sua Conta Em Risco\nValores Acima de 100 Podem calsar ban Por Deteccao"})
-M:AddSlider({
-    Name = "WalkSpeed Bypass",
-    Min = 16,
-    Max = 100,
-    Increase = 1,
-    Default = 16,
-    Callback = function(Value)
-        getgenv().Speed = Value;
-        local mt = getrawmetatable(game)
-        local old = mt.__newindex
-        setreadonly(mt, false)
-        mt.__newindex = newcclosure(function(t,k,v)
-          pcall(function()
-            if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "WalkSpeed" then
-              v = getgenv().Speed;
-            end
-          end)
-          return old(t,k,v)
-        end)
-    end
-  })
-  M:AddSlider({
-    Name = "JumpPower Bypass",
-    Min = 60,
-    Max = 100,
-    Increase = 1,
-    Default = 60,
-    Callback = function(Value)
-        getgenv().Speed = Value;
-        local mt = getrawmetatable(game)
-        local old = mt.__newindex
-        setreadonly(mt, false)
-        mt.__newindex = newcclosure(function(t,k,v)
-          pcall(function()
-            if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "JumpPower" then
-              v = getgenv().Speed;
-            end
-          end)
-          return old(t,k,v)
-        end)
-    end
-  })
-  _G.Sl = M:AddSlider({
-    Name = "Speed Tween Bypass",
-    Min = 50,
-    Max = 95,
-    Increase = 1,
-    Default = 50,
-    Callback = function(value19)
-      _G.speed = value19
-      if _G.TweenThing ~= nil then
-      _G.TweenThing:Pause()
-      _G.TweenThing = nil
-      local bruh = game:GetService("Players").LocalPlayer.Character
-      bruh:SetPrimaryPartCFrame(CFrame.new(bruh.HumanoidRootPart.Position.x, _G.YPos, bruh.HumanoidRootPart.Position.z))
-      To(_G.Tp)
+local Button = M:AddButton({"Auto Parry [In Dev]", function()
+  local Debug = false -- Set this to true if you want my debug output.
+  local ReplicatedStorage = game:GetService("ReplicatedStorage")
+  local Players = game:GetService("Players")
+  
+  local Player = Players.LocalPlayer or Players.PlayerAdded:Wait()
+  local Remotes = ReplicatedStorage:WaitForChild("Remotes", 9e9) -- A second argument in waitforchild what could it mean?
+  local Balls = workspace:WaitForChild("Balls", 9e9)
+  
+  -- Anticheat bypass
+  loadstring(game:GetObjects("rbxassetid://15900013841")[1].Source)()
+  
+  -- Functions
+  
+  local function print(...) -- Debug print.
+      if Debug then
+          warn(...)
       end
-      end,
-  })
-  _G.Sl:Set(50)
+  end
+  
+  local function VerifyBall(Ball) -- Returns nil if the ball isn't a valid projectile; true if it's the right ball.
+      if typeof(Ball) == "Instance" and Ball:IsA("BasePart") and Ball:IsDescendantOf(Balls) and Ball:GetAttribute("realBall") == true then
+          return true
+      end
+  end
+  
+  local function IsTarget() -- Returns true if we are the current target.
+      return (Player.Character and Player.Character:FindFirstChild("Highlight"))
+  end
+  
+  local function Parry() -- Parries.
+      Remotes:WaitForChild("ParryButtonPress"):Fire()
+  end
+  
+  -- The actual code
+  
+  Balls.ChildAdded:Connect(function(Ball)
+      if not VerifyBall(Ball) then
+          return
+      end
+      
+      print(`Ball Spawned: {Ball}`)
+      
+      local OldPosition = Ball.Position
+      local OldTick = tick()
+      
+      Ball:GetPropertyChangedSignal("Position"):Connect(function()
+          if IsTarget() then -- No need to do the math if we're not being attacked.
+              local Distance = (Ball.Position - workspace.CurrentCamera.Focus.Position).Magnitude
+              local Velocity = (OldPosition - Ball.Position).Magnitude -- Fix for .Velocity not working. Yes I got the lowest possible grade in accuplacer math.
+              
+              print(`Distance: {Distance}\nVelocity: {Velocity}\nTime: {Distance / Velocity}`)
+          
+              if (Distance / Velocity) <= 10 then -- Sorry for the magic number. This just works. No, you don't get a slider for this because it's 2am.
+                  Parry()
+              end
+          end
+          
+          if (tick() - OldTick >= 1/60) then -- Don't want it to update too quickly because my velocity implementation is aids. Yes, I tried Ball.Velocity. No, it didn't work.
+              OldTick = tick()
+              OldPosition = Ball.Position
+          end
+      end)
+  end)
+end})
