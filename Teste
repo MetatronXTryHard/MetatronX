@@ -75,7 +75,7 @@ local Button = M:AddButton({"Auto Parry [In Dev]", function()
               
               print(`Distance: {Distance}\nVelocity: {Velocity}\nTime: {Distance / Velocity}`)
           
-              if (Distance / Velocity) <= 11 then -- Sorry for the magic number. This just works. No, you don't get a slider for this because it's 2am.
+              if (Distance / Velocity) <= 10 then -- Sorry for the magic number. This just works. No, you don't get a slider for this because it's 2am.
                   Parry()
               end
           end
