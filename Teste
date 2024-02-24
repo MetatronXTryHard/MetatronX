@@ -1,3 +1,11 @@
+
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/Teste"))()
+
+
+
+
 function To(position)
   _G.Tp = (Vector3.new(position.x, position.y, position.z))
   spawn(function()
@@ -151,3 +159,21 @@ M:AddSlider({
         end)
     end
   })
+  _G.Sl = M:AddSlider({
+    Name = "Speed Tween Bypass",
+    Min = 50,
+    Max = 95,
+    Increase = 1,
+    Default = 50,
+    Callback = function(value19)
+      _G.speed = value19
+      if _G.TweenThing ~= nil then
+      _G.TweenThing:Pause()
+      _G.TweenThing = nil
+      local bruh = game:GetService("Players").LocalPlayer.Character
+      bruh:SetPrimaryPartCFrame(CFrame.new(bruh.HumanoidRootPart.Position.x, _G.YPos, bruh.HumanoidRootPart.Position.z))
+      To(_G.Tp)
+      end
+      end,
+  })
+  _G.Sl:Set(50)
