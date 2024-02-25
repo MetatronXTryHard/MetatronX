@@ -88,18 +88,73 @@ local Button = M:AddButton({"Auto Parry [In Dev]", function()
   end)
 end})
 local Toggle = M:AddToggle({"Auto Spam Parry [In Dev]", false, function(value)
-  while true do
-    task.wait()
-    local ball = workspace.Balls:FindFirstChildWhichIsA("BasePart")
-    local hum = game.Players.LocalPlayer.Character
-    local balldist = 8
-    if ball then
-    local dist = (ball.Position - hum.HumanoidRootPart.position).Magnitude
-    if dist <= balldist and hum:FindFirstChild("Highlight") then
-    keypress(0x46)
-    end
-    end
-    end
+ local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local VirtualInput = game:GetService("VirtualInputManager")
+getgenv().config = {
+   dist = 44,
+   possible_speed = 3.5 or 1/0,
+   use_what = "Remote" :: "Remote" | "Keyboard"
+}
+
+setmetatable({
+   character = Players.LocalPlayer.Character,
+   find_ball = function(self)
+       for In, Ba in workspace.Balls:GetChildren() do
+           local checkLight = Ba:FindFirstChild("Highlight")
+           local isBasepart = Ba:IsA("BasePart")
+
+           if isBasepart and checkLight then
+               if not self.character:FindFirstChild("Highlight", true) then return end
+               if (Ba.Position - self.character.HumanoidRootPart.Position).Magnitude <= getgenv().config.dist then
+                   ({
+                       ["Remote"] = function()
+                           local containers = {}
+                           for Index, Player in workspace.Alive:GetChildren() do
+                              local characterToPlayer = Players:GetPlayerFromCharacter(Player)
+
+                              containers[characterToPlayer.UserId] = characterToPlayer.Character.HumanoidRootPart.Position
+                           end
+
+                           ReplicatedStorage.Remotes.ParryAttempt:FireServer(
+                            getgenv().possible_speed,
+                            Players:GetPlayers()[math.random(1,#Players:GetPlayers())].Character.HumanoidRootPart.CFrame,
+                            containers,
+                            table.foreach(workspace.Balls:GetChildren(), function(index, val)
+                                local cool = {}
+
+                                table.insert(cool, tonumber(val.Name)) -- dupes 1; client :: ?
+                                table.insert(cool, tonumber(val.Name)) -- dupes 2; server :: ?
+                               
+                                return cool
+                            end)
+                           )
+                       end,
+
+                       ["Keyboard"] = function()
+                           VirtualInput:SendKeyEvent(true, "F", false, game)
+                       end,
+                   })[getgenv().config.use_what]()
+                   
+               end
+           end
+       end
+   end,
+
+   machine_execute = function(self)
+       RunService.Heartbeat:Connect(function()
+           self.find_ball(self)
+       end)
+       Players.LocalPlayer.CharacterAdded:Connect(function(Character)
+           self.character = Character
+       end)
+   end
+}, {
+   __call = function(self)
+       self.machine_execute(self)
+   end
+})("one piece roblox game --- [ red devil ] : kiro DZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ LOL")
 end})
 local AutoParry2 = M:AddToggle({"Auto Spam Parry [In Dev]", false, function(value)
   getgenv().ScriptConfig = {
