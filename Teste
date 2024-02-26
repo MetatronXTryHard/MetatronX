@@ -97,8 +97,14 @@ Tabs.P:AddButton({
   Title = "Auto Parry [In Dev]",
   Description = "Defenda AutoMaticamente",
   Callback = function()
-    getgenv().visualizer = AutoFarmSwanGlasses_Hop
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/main/RedCircleBlock"))()
+    Print"Coded By MTX Team"
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoParry%20MTXClient"))()
+    game.StarterGui:SetCore("SendNotification", {
+      Title = "By metatron_exe", 
+      Text = "Coded By MTX Team" ,
+      Icon = "http://www.roblox.com/asset/?id=9999999",
+      Duration = 2.5
+  })
   end
 })
 Tabs.P:AddButton({
