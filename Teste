@@ -174,9 +174,9 @@ local function ViewParryArea()
     if tonumber(Range) then
       BallParry.Size = Vector3.new(Range, Range, Range)
       if plrChar and plrChar:FindFirstChild("Highlight") then
-        BallParry.BrickColor = BrickColor.new("Really black")
-      else
         BallParry.BrickColor = BrickColor.new("Royal purple")
+      else
+        BallParry.BrickColor = BrickColor.new("Really black")
       end
       if Alive:FindFirstChild(Player.Name) then
         if plrPP then
