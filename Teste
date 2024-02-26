@@ -98,6 +98,101 @@ else
     Fluent.Window:Minimize()
   end)
 end  
+
+-- Variables
+
+local runService = game:GetService("RunService")
+
+local workspace = game:GetService("Workspace")
+
+local players = game:GetService("Players")
+
+local localPlayer = players.LocalPlayer
+
+local players = game:GetService("Players")
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+local Balls = game:GetService("Workspace").Balls
+
+local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+
+local UserInputService = game:GetService("UserInputService")
+
+local replicatedStorage = game:GetService("ReplicatedStorage")
+
+local upgrades = localPlayer.Upgrades
+
+
+
+
+
+-- Functions
+
+local function ViewParryArea()
+  local BallParry = Instance.new("Part", workspace)
+  BallParry.Name = "Parry Range <redz hub>"
+  BallParry.Material = "ForceField"
+  BallParry.CastShadow = false
+  BallParry.CanCollide = false
+  BallParry.Anchored = true
+  BallParry.BrickColor = BrickColor.new("Really white")
+  BallParry.Shape = "Ball"
+
+  local PartFind = workspace:FindFirstChild(BallParry.Name)
+  if PartFind and PartFind ~= BallParry then
+    PartFind:Destroy()
+  end
+
+  local Alive = workspace:WaitForChild("Alive", 9e9)
+  local Players = game:GetService("Players")
+  local Player = Players.LocalPlayer
+
+  task.spawn(function()
+    local Balls = workspace:WaitForChild("Balls", 9e9)
+    local function GetBall()
+      for _,ball in pairs(Balls:GetChildren()) do
+        if ball and ball:GetAttribute("realBall") then
+          return ball
+        end
+      end
+    end
+
+    while getgenv().ViewParryArea do task.wait()
+      local Ball = GetBall()
+      if Ball then
+        getgenv().ParryRange = Ball.Velocity.Magnitude * 0.5
+      end
+    end
+  end)
+
+  while getgenv().ViewParryArea do task.wait()
+    local plrChar = Player.Character
+    local plrPP = plrChar and plrChar.PrimaryPart
+    local Range = getgenv().ParryRange
+
+    if tonumber(Range) then
+      BallParry.Size = Vector3.new(Range, Range, Range)
+      if plrChar and plrChar:FindFirstChild("Highlight") then
+        BallParry.BrickColor = BrickColor.new("Really red")
+      else
+        BallParry.BrickColor = BrickColor.new("Really white")
+      end
+      if Alive:FindFirstChild(Player.Name) then
+        if plrPP then
+          BallParry.Position = plrPP.Position
+        end
+      else
+        BallParry.Position = Vector3.new(1000, 1000, 1000)
+      end
+    end
+  end
+
+  if BallParry then
+    BallParry:Destroy()
+  end
+end
+
 --Script
 local Toggle = Tabs.P:AddToggle("AutoParry", {Title = "Auto Parry", Default = false })
 
@@ -180,3 +275,9 @@ Tabs.P:AddButton({
   end 
   end
 })
+local Toggle = Tabs.P:AddToggle("Teste", {Title = "Teste", Default = false })
+
+Toggle:OnChanged(function(value)
+  getgenv().ViewParryArea = value
+  ViewParryArea()
+end)
