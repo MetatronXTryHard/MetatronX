@@ -20,10 +20,89 @@ Window:AddMinimizeButton({
 })
 local AutoParry = P:AddToggle({
     Name = "Auto Parry [In Dev]",
-    Description = "Use A Defesa Automaticamente",
+    Description = "Use A Defeza Automaticamente",
     Default = false
   })
-AutoParry:Callback(function(boo)
+AutoParry:Callback(function(MTXParry)
+    getgenv().AutoParry = MTXParry
+    task.spawn(AutoParry)
+end)
+--auto parry
+
+local function AutoParry()
+    local ParryDelay, DetectDisctance, BallSpeed, ParryActive, OnParry = tick(), 0, 0
+    
+    local function Parry()
+      if not ParryActive then
+        NormalClick()
+        ParryActive = true
+      end
+    end
+    
+    local function IsTarget(Ball)
+      return Ball:GetAttribute("target") == Player.Name
+    end
+    
+    local function GetBall()
+      for _,ball in pairs(Balls:GetChildren()) do
+        if ball and ball:GetAttribute("realBall") == true then
+          return ball
+        end
+      end
+    end
+    
+    task.spawn(function()
+      while getgenv().AutoParry do wait()
+        local plrPP = Player.Character and Player.Character.PrimaryPart
+        local Ball = GetBall()
+        
+        if plrPP and Ball and not OnParry then
+          DetectDisctance = (plrPP.Position - Ball.Position).Magnitude
+        else
+          DetectDisctance = 0
+        end
+      end
+    end)
+    
+    task.spawn(function()
+      while getgenv().AutoParry do wait()
+        local Ball = GetBall()
+        
+        if Ball and not StopCalculo then
+          BallSpeed = math.clamp(Ball.Velocity.Magnitude, 30, 500) * 0.5
+          getgenv().ParryRange = BallSpeed
+        end
+      end
+    end)
+    
+    task.spawn(function()
+      while getgenv().AutoParry do wait()
+        local Ball = GetBall()
+        
+        if Ball and IsTarget(Ball) and DetectDisctance < BallSpeed then
+          OnParry, StopCalculo = true, true
+        else
+          OnParry, StopCalculo = false, false
+        end
+      end
+    end)
+    
+    while getgenv().AutoParry do wait()
+      if OnParry then
+        Parry()
+      else
+        ParryActive = false
+      end
+    end
+  end
+  
+  --////////////////////////////////////
+local AutoSpam = P:AddToggle({
+    Name = "Auto Parry Spam [In Dev]",
+    Description = "Use A Defeza Muito Rapido Automaticamente",
+    Default = true
+  })
+  AutoSpam:Callback(function(MTXSpam)
     local function get_plr()
         return game.Players.LocalPlayer
       end
@@ -188,6 +267,6 @@ AutoParry:Callback(function(boo)
         end
       end
        
-      getgenv().DetectSpam = boo
+      getgenv().DetectSpam = MTXSpam
       DetectSpam()
 end)
