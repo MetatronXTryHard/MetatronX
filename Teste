@@ -25,7 +25,7 @@ InterfaceManager:BuildInterfaceSection(Tabs.Settings)
 Window:SelectTab(1)
 local Parry = Tabs.P:AddToggle("Parry", {Title = "Auto Parry", Default = false })
 Toggle:OnChanged(function(value)
-
+print"MTX On Top"
 end)
 -- Botao Para mobile suport
 local CheckMobile = function()
