@@ -94,6 +94,13 @@ else
 end  
 --Script
 Tabs.P:AddButton({
+  Title = "Auto Parry [In Dev]",
+  Description = "Defenda AutoMaticamente",
+  Callback = function()
+    loadstring(game:HttpGet("https://scriptblox.com/raw/UPD-Blade-Ball-op-autoparry-with-visualizer-8652"))()
+  end
+})
+Tabs.P:AddButton({
   Title = "Auto Spam Parry [In Dev]",
   Description = "Basicamente Um Ultra Spam Parry",
   Callback = function()
