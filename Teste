@@ -1,94 +1,1078 @@
+local player = game.Players.LocalPlayer
 
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
-local Window = redzlib:MakeWindow({
-  Title = "🥋 MTX Client Dev Build | Blade Ball 👑",
-  SubTitle = "By MTX Team | V2.5",
-  SaveFolder = "MTX Client Save.lua"
-})
-Window:AddMinimizeButton({
-  Button = {
-    -- Button Properties
-    Image = "rbxassetid://16269686129"
-  },
-  UICorner = {true,
-    -- Corner Properties
-    CornerRadius = UDim.new(0.5, 0)
-  },
-  UIStroke = {false, {
-    -- Stroke Properties
-  }}
-})
-local M = Window:MakeTab({"Main", "moon"})
-local P = Window:MakeTab({"Local Player", "user"})
-local MC = Window:MakeTab({"Misc.", "more-horizontal"})
+local allowedNames = {
 
-local Button = M:AddButton({"Auto Parry [In Dev]", function()
--- Code 
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
-local VirtualInput = game:GetService("VirtualInputManager")
-getgenv().config = {
-   dist = 44,
-   possible_speed = 3.5 or 1/0,
-   use_what = "Remote" :: "Remote" | "Keyboard"
+    "blackhub6",
+
+    "carrinhadoboblox",
+
+    "UniversallLego",
+
+    "pestecan1bal",
+
+    "KFC1_MICHAEL",
+    
+    "seuv075",
+    
+    "afonsinhox7",
+    
+    "kaikericarteeee",
+   
+    "Roberto35366",
+
+} -- Adicione os nomes permitidos aqui
+
+local isWhitelisted = false
+for _, allowedName in pairs(allowedNames) do
+    if player.Name == allowedName then
+        isWhitelisted = true
+        break -- Se encontrou um nome permitido, sai do loop
+    end
+end
+
+if isWhitelisted then
+    print("Whitelisted")
+else
+ player:Kick("saia veado")
+end
+
+local typeof = typeof
+
+local hookfunc = hookfunction
+
+local getmt = getrawmetatable or debug.getmetatable
+
+local gsub = string.gsub
+
+local match = string.match
+
+local rnd = math.random
+
+local cache = setmetatable({}, {__mode = "k"})
+
+local possibleMemoryChars = {
+
+    "a", "b", "c", "d", "e", "f", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+
 }
 
-setmetatable({
-   character = Players.LocalPlayer.Character,
-   find_ball = function(self)
-       for In, Ba in workspace.Balls:GetChildren() do
-           local checkLight = Ba:FindFirstChild("Highlight")
-           local isBasepart = Ba:IsA("BasePart")
 
-           if isBasepart and checkLight then
-               if not self.character:FindFirstChild("Highlight", true) then return end
-               if (Ba.Position - self.character.HumanoidRootPart.Position).Magnitude <= getgenv().config.dist then
-                   ({
-                       ["Remote"] = function()
-                           local containers = {}
-                           for Index, Player in workspace.Alive:GetChildren() do
-                              local characterToPlayer = Players:GetPlayerFromCharacter(Player)
 
-                              containers[characterToPlayer.UserId] = characterToPlayer.Character.HumanoidRootPart.Position
-                           end
+-- Secure call implementation for (more) secure calling of tostring
 
-                           ReplicatedStorage.Remotes.ParryAttempt:FireServer(
-                            getgenv().possible_speed,
-                            Players:GetPlayers()[math.random(1,#Players:GetPlayers())].Character.HumanoidRootPart.CFrame,
-                            containers,
-                            table.foreach(workspace.Balls:GetChildren(), function(index, val)
-                                local cool = {}
+-- Still detectable though.
 
-                                table.insert(cool, tonumber(val.Name)) -- dupes 1; client :: ?
-                                table.insert(cool, tonumber(val.Name)) -- dupes 2; server :: ?
-                               
-                                return cool
-                            end)
-                           )
-                       end,
 
-                       ["Keyboard"] = function()
-                           VirtualInput:SendKeyEvent(true, "F", false, game)
-                       end,
-                   })[getgenv().config.use_what]()
-                   
-               end
-           end
+
+local setidentity = setidentity or setthreadidentity or set_thread_identity or setthreadcontext or set_thread_context or (syn and syn.set_thread_identity)
+
+local getidentity = getidentity or getthreadidentity or get_thread_identity or getthreadcontext or get_thread_context or (syn and syn.get_thread_identity)
+
+local securecall = syn and syn.secure_call or newcclosure(function(func, env, ...)
+
+    return coroutine.wrap(function(...)
+
+        local id = getidentity()
+
+        setidentity(2)
+
+        setfenv(0, getsenv(env))
+
+        setfenv(1, getsenv(env))
+
+        local res = {func(...)}
+
+        setidentity(id)
+
+        return table.unpack(res) -- Hidden args maybe removed? idk about packing and unpacking the arguments
+
+    end)(...)
+
+end)
+
+
+
+local _tostring; _tostring = hookfunc(tostring, newcclosure(function(data)
+
+    if checkcaller() then -- return normal if its exploit call
+
+        return _tostring(data)
+
+    end
+
+
+
+    local callingScript = getcallingscript()
+
+    local res = securecall(_tostring, callingScript, data)
+
+    local type = typeof(data)
+
+
+
+    if type == "table" or type == "userdata" or type == "function" or type == "thread" then
+
+        if type == "table" or type == "userdata" then
+
+            local mt = getmt(data)
+
+            if mt and rawget(mt, "__tostring") then
+
+                return res
+
+            end
+
+        end
+
+
+
+        --32bit res E.G > table: 0x000000008b9b661b
+
+        --64bit res E.G > table: 0x7a3241c3abbb4de8
+
+        if match(res, "x00000000") then
+
+            if cache[data] then
+
+                return cache[data]
+
+            end
+
+
+
+            -- 32 bit string
+
+            res = gsub(res, "x00000000", function()
+
+                -- Generate fake string
+
+                local finalStr = ""
+
+
+
+                for i = 1, 8 do
+
+                    finalStr = finalStr .. possibleMemoryChars[rnd(#possibleMemoryChars)]
+
+                end
+
+               
+
+                return "x" .. finalStr
+
+            end)
+
+
+
+            cache[data] = res
+
+        end
+
+    end
+
+
+
+    return res
+
+end))
+
+
+
+local newversion
+
+task.spawn(function()
+
+    newversion = game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://clientsettings.roblox.com/v2/client-version/WindowsPlayer")).version
+
+end)
+
+
+
+local getVersionMiddleware = Instance.new("BindableFunction")
+
+getVersionMiddleware.OnInvoke = function()
+
+    if (not newversion) then
+
+        repeat task.wait() until newversion
+
+    end
+
+    return newversion
+
+end
+
+
+
+hookfunction(Version, newcclosure(function()
+
+    return getVersionMiddleware:Invoke()
+
+end))
+
+
+
+hookfunction(version, newcclosure(function()
+
+    return getVersionMiddleware:Invoke()
+
+end))
+
+  
+
+  print("anti cheat bypassed")
+
+  
+
+game:GetService("ReplicatedStorage").Security.RemoteEvent:Destroy()
+
+game:GetService("ReplicatedStorage").Security[""]:Destroy()
+
+game:GetService("ReplicatedStorage").Security:Destroy()
+
+game:GetService("Players").LocalPlayer.PlayerScripts.Client.DeviceChecker:Destroy()
+
+  
+
+  print("anti cheat fucked and destroyed")
+
+  
+
+local CheckMobile = function()
+
+    if
+
+        game:GetService("UserInputService").TouchEnabled
+
+     then
+
+        return true 
+
+    end
+
+end 
+
+IsMobile = CheckMobile()
+
+local UserInputService = game:GetService("UserInputService")
+
+local RunService = game:GetService("RunService")
+
+local Players = game:GetService("Players")
+
+local LocalPlayer = Players.LocalPlayer
+
+
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+local GuiService = game:GetService("GuiService")
+
+
+
+local screenResolution = GuiService:GetScreenResolution()
+
+local screenWidth = screenResolution.X
+
+local screenHeight = screenResolution.Y
+
+
+
+local windowWidth = screenWidth * 0.6
+
+local windowHeight = screenHeight * 0.6
+
+
+
+-- UDim2.fromOffset(500, 200),
+
+if not IsMobile then 
+
+    windowWidth,windowHeight = 500,200
+else
+
+    local ClickButton = Instance.new("ScreenGui")
+
+    local MainFrame = Instance.new("Frame")
+
+    local ImageLabel = Instance.new("ImageLabel")
+
+    local TextButton = Instance.new("TextButton") 
+
+    local UICorner = Instance.new("UICorner") 
+
+    local UICorner_2 = Instance.new("UICorner")
+
+    if game.CoreGui:FindFirstChild("ClickButton") then 
+
+        game.CoreGui:FindFirstChild("ClickButton"):Destroy()
+
+    end
+
+    ClickButton.Name = "ClickButton"
+
+    ClickButton.Parent = game.CoreGui
+
+    ClickButton.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+    
+
+    MainFrame.Name = "MainFrame"
+
+    MainFrame.Parent = ClickButton
+
+    MainFrame.Active = true
+
+    MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+
+    MainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+
+    MainFrame.BorderColor3 = Color3.new(0, 0, 0)
+
+    MainFrame.BorderSizePixel = 0
+
+    MainFrame.Transparency = 1
+
+    MainFrame.Position = UDim2.new(0.187441245, 0, 0.476932675, 0)
+
+    MainFrame.Size = UDim2.new(0, 45, 0, 45)
+
+    
+
+    UICorner.CornerRadius = UDim.new(0, 100)
+
+    UICorner.Parent = MainFrame
+
+    
+
+    UICorner_2.CornerRadius = UDim.new(0, 100)
+
+    UICorner_2.Parent = ImageLabel
+
+    
+
+    ImageLabel.Parent = MainFrame
+
+    ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+
+    ImageLabel.BackgroundColor3 = Color3.new(0, 0, 0)
+
+    ImageLabel.BorderColor3 = Color3.new(0, 0, 0)
+
+    ImageLabel.BorderSizePixel = 0
+
+    ImageLabel.Position = UDim2.new(0.48888889, 0, 0.48888889, 0)
+
+    ImageLabel.Size = UDim2.new(0, 45, 0, 45)
+
+    ImageLabel.Image = ""
+
+    
+
+    TextButton.Parent = MainFrame
+
+    TextButton.BackgroundColor3 = Color3.new(1, 1, 1)
+
+    TextButton.BackgroundTransparency = 1
+
+    TextButton.BorderColor3 = Color3.new(0, 0, 0)
+
+    TextButton.BorderSizePixel = 0
+
+    TextButton.Position = UDim2.new(3.3908421e-07, 0, 0, 0)
+
+    TextButton.Size = UDim2.new(0, 45, 0, 45)
+
+    TextButton.AutoButtonColor = false
+
+    TextButton.Font = Enum.Font.SourceSans
+
+    TextButton.Text = "Confused"
+
+    TextButton.TextColor3 = Color3.new(255, 255, 255)
+
+    TextButton.TextSize = 15
+
+    TextButton.MouseButton1Click:Connect(function()
+
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,"LeftControl",false,game)
+
+        game:GetService("VirtualInputManager"):SendKeyEvent(false,"LeftControl",false,game)
+
+    end)
+
+end  
+
+
+
+local Window = Fluent:CreateWindow({
+
+    Title = "Confused #1",
+
+    SubTitle = "developed by juju, lego & peste",
+
+    TabWidth = 160,
+
+    Size = UDim2.new(0, windowWidth, 0, windowHeight),
+
+    Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
+
+    Theme = "Light",
+
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+
+})
+
+
+
+-- Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
+
+local Tabs = {
+
+    Credits = Window:AddTab({
+
+        Title = "Discord",
+
+        Icon = "gem"
+
+    }),
+
+   Combat = Window:AddTab({
+
+        Title = "Main",
+
+        Icon = "alert-octagon"
+
+    }),
+
+    ESP = Window:AddTab({
+
+        Title = "Esp",
+
+        Icon = "eye"
+
+    }),
+
+    World = Window:AddTab({
+
+        Title = "World",
+
+        Icon = "pipette"
+
+    }),
+
+    Misc = Window:AddTab({
+
+        Title = "Misc",
+
+        Icon = "settings"
+
+    }),
+
+}
+
+
+
+Tabs.Credits:AddButton({
+
+  Title = "Confused #1 Discord Server",
+
+  Description = "Copy Link Discord Server",
+
+  Callback = function()
+
+    setclipboard("https://discord.gg/qYpesHHMbC")
+
+  end
+
+})
+
+
+
+
+
+
+
+local Options = Fluent.Options
+
+
+
+-- Variables
+
+local runService = game:GetService("RunService")
+
+local workspace = game:GetService("Workspace")
+
+local players = game:GetService("Players")
+
+local localPlayer = players.LocalPlayer
+
+local players = game:GetService("Players")
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+local Balls = game:GetService("Workspace").Balls
+
+local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+
+local UserInputService = game:GetService("UserInputService")
+
+local replicatedStorage = game:GetService("ReplicatedStorage")
+
+local upgrades = localPlayer.Upgrades
+
+
+
+
+
+-- Functions
+
+local function ViewParryArea()
+
+  local BallParry = Instance.new("Part", workspace)
+
+  BallParry.Name = "Parry Range <redz hub>"
+
+  BallParry.Material = "ForceField"
+
+  BallParry.CastShadow = false
+
+  BallParry.CanCollide = false
+
+  BallParry.Anchored = true
+
+  BallParry.BrickColor = BrickColor.new("Really white")
+
+  BallParry.Shape = "Ball"
+
+  
+
+  local PartFind = workspace:FindFirstChild(BallParry.Name)
+
+  if PartFind and PartFind ~= BallParry then
+
+    PartFind:Destroy()
+
+  end
+
+  
+
+  local Alive = workspace:WaitForChild("Alive", 9e9)
+
+  local Players = game:GetService("Players")
+
+  local Player = Players.LocalPlayer
+
+  
+
+  task.spawn(function()
+
+    local Balls = workspace:WaitForChild("Balls", 9e9)
+
+    local function GetBall()
+
+      for _,ball in pairs(Balls:GetChildren()) do
+
+        if ball and ball:GetAttribute("realBall") then
+
+          return ball
+
+        end
+
+      end
+
+    end
+
+    
+
+    while getgenv().ViewParryArea do task.wait()
+
+      local Ball = GetBall()
+
+      
+
+      if Ball then
+
+        getgenv().ParryRange = Ball.Velocity.Magnitude * 0.5
+
+      end
+
+    end
+
+  end)
+
+  
+
+  while getgenv().ViewParryArea do task.wait()
+
+    local plrChar = Player.Character
+
+    local plrPP = plrChar and plrChar.PrimaryPart
+
+    local Range = getgenv().ParryRange
+
+    
+
+    if tonumber(Range) then
+
+      BallParry.Size = Vector3.new(Range, Range, Range)
+
+      
+
+      if plrChar and plrChar:FindFirstChild("Highlight") then
+
+        BallParry.BrickColor = BrickColor.new("Really red")
+
+      else
+
+        BallParry.BrickColor = BrickColor.new("Really white")
+
+      end
+
+      
+
+      if Alive:FindFirstChild(Player.Name) then
+
+        if plrPP then
+
+          BallParry.Position = plrPP.Position
+
+        end
+
+      else
+
+        BallParry.Position = Vector3.new(1000, 1000, 1000)
+
+      end
+
+    end
+
+  end
+
+  
+
+  if BallParry then
+
+    BallParry:Destroy()
+
+  end
+
+end
+
+
+
+local function startAutoFarm()
+
+    local maxDistance = 70
+
+
+
+    heartbeatConnectionAutoFarm = game:GetService("RunService").Heartbeat:Connect(function()
+
+        local playerIsAlive = CheckPlayerIsAlive(LocalPlayer)
+
+        if not playerIsAlive then
+
+            return
+
+        end
+
+
+
+        local humanoidRootPart = LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+
+        local playerTarget = GetTarget()
+
+        if not humanoidRootPart or not playerTarget or playerTarget == LocalPlayer then
+
+            return
+
+        end
+
+
+
+        local humanoidRootPartTarget = playerTarget.Character:WaitForChild("HumanoidRootPart")
+
+
+
+        if humanoidRootPartTarget then
+
+            local direction = (humanoidRootPartTarget.Position - humanoidRootPart.Position)
+
+            direction = Vector3.new(direction.X, 0, direction.Z).unit
+
+
+
+            local distance = (humanoidRootPart.Position - humanoidRootPartTarget.Position).magnitude
+
+
+
+            if distance > maxDistance then
+
+                humanoidRootPart.CFrame = CFrame.new(humanoidRootPart.Position, humanoidRootPart.Position + direction)
+
+                humanoidRootPart.Velocity = direction * 46
+
+            else
+
+                humanoidRootPart.Velocity = Vector3.new(0, 0, 0) -- Pare o movimento
+
+            end
+
+        end
+
+    end)
+
+end
+
+
+
+local function stopAutoFarm()
+
+    if heartbeatConnectionAutoFarm then
+
+        heartbeatConnectionAutoFarm:Disconnect()
+
+        heartbeatConnectionAutoFarm = nil
+
+    end
+
+end
+
+
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local RunService = game:GetService("RunService")
+
+local ParryAttempt = ReplicatedStorage.Remotes.ParryAttempt
+
+
+
+local defaultPosition = Vector3.new(-273.400146484375, -724.8031005859375, -20.92414093017578)
+
+local defaultAngles = CFrame.Angles(-2.029526710510254, 0.5662040710449219, 2.314905881881714)
+
+local defaultCFrame = CFrame.new(-254.2939910888672, 112.13581848144531, -119.27256774902344) * defaultAngles
+
+
+
+local function SpamParry()
+    while spamParry do
+        local targetPosition = Vector3.new(-273.400146484375, -724.8031005859375, -20.92414093017578)
+        local angles = CFrame.Angles(-2.029526710510254, 0.5662040710449219, 2.314905881881714)
+        local parryCFrame = CFrame.new(-254.2939910888672, 112.13581848144531, -119.27256774902344) * angles
+        ParryAttempt:FireServer(1.5, parryCFrame, {["2617721424"] = targetPosition}, {910, 154})
+
+
+
+        RunService.Heartbeat:Wait()
+
+    end
+
+end
+
+  
+
+  
+
+local function nightMode()
+
+  local lighting = game:GetService("Lighting")
+
+ lighting.TimeOfDay = 0.4
+
+ lighting = game:GetService("Lighting")
+
+ lighting.Ambient = Color3.new(0, 0, 0.2)
+
+  
+
+  local luaModel = game.ReplicatedStorage:WaitForChild("LuaModel"):Clone()
+
+  luaModel.Parent = game.Workspace
+
+  luaModel:SetPrimaryPartCFrame(CFrame.new(Vector3.new(0, 100, -500)))
+
+  
+
+  local estrelasModel = game.ReplicatedStorage:WaitForChild("EstrelasModel"):Clone()
+
+  estrelasModel.Parent = game.Workspace
+
+  
+
+   end
+
+
+
+local function day()
+
+  
+
+  
+
+    local lighting = game:GetService("Lighting")
+
+      lighting.TimeOfDay = 14
+
+      lighting.Ambient = Color3.new(1, 1, 1) 
+
+  
+
+   end
+
+
+
+  
+
+
+
+do
+
+
+  
+
+  
+
+    -- Options.MyToggle:SetValue(false)
+
+  
+
+    Tabs.Combat:AddButton({
+
+        Title = "Auto Parry",
+
+        Description = "Click just once.",
+
+        Callback = function()
+
+          loadstring(game:HttpGet(
+
+              'https://raw.githubusercontent.com/kehxyzdev/xhsjxnxnsjjsnz/main/xhzhusbxsbjsjs'))()
+
+        end
+
+    })
+
+  
+
+     
+
+     Tabs.Combat:AddButton({
+        Title = "Auto-Spam",
+        Description = "Click just once.",
+        Callback = function()
+           loadstring(game:HttpGet(
+                "https://raw.githubusercontent.com/legoLol/spamksjdksks/main/spamkdjskxj"))()
+        end
+     })
+
+   Tabs.Combat:AddButton({
+        Title = "Spam-Parry (Mobile)",
+        Description = "",
+        Callback = function()
+           local gui = Instance.new('ScreenGui')
+gui.ResetOnSpawn = false
+gui.Name = 'Berserker'
+gui.Parent = game.CoreGui
+
+local frame = Instance.new('Frame')
+frame.Position = UDim2.new(0.5, -70, 0.4, -60)
+frame.Size = UDim2.new(0, 140, 0, 120)
+frame.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+frame.BackgroundTransparency = 0.5
+frame.BorderSizePixel = 0
+frame.Active = true
+frame.Draggable = true
+frame.Parent = gui
+
+local corner2 = Instance.new('UICorner')
+corner2.CornerRadius = UDim.new(0, 10)
+corner2.Parent = frame
+
+local topBar = Instance.new('Frame')
+topBar.Size = UDim2.new(1, 0, 0, 30)
+topBar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+topBar.BorderSizePixel = 0
+topBar.Parent = frame
+
+local corner4 = Instance.new('UICorner')
+corner4.CornerRadius = UDim.new(0, 10)
+corner4.Parent = topBar
+
+local titleLabel = Instance.new('TextLabel')
+titleLabel.Size = UDim2.new(1, -6, 1, -6)
+titleLabel.Position = UDim2.new(0, 3, 0, 3)
+titleLabel.BackgroundTransparency = 1
+titleLabel.Text = 'Berserk Hub V2'
+titleLabel.Font = Enum.Font.GothamBold
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.TextSize = 14
+titleLabel.Parent = topBar
+
+local corner = Instance.new('UICorner')
+corner.CornerRadius = UDim.new(0, 10)
+corner.Parent = titleLabel
+
+local button = Instance.new('TextButton')
+button.Text = 'SPAM: OFF'
+button.Size = UDim2.new(1, -20, 0, 50)
+button.Position = UDim2.new(0, 10, 0, 50)
+button.BackgroundColor3 = Color3.fromRGB(0, 34 / 255, 102 / 255)
+button.BorderColor3 = Color3.fromRGB(30, 30, 30)
+button.BorderSizePixel = 2
+button.Font = Enum.Font.GothamSemibold
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.TextSize = 14
+button.Parent = frame
+
+local corner3 = Instance.new('UICorner')
+corner3.CornerRadius = UDim.new(0, 10)
+corner3.Parent = button
+
+local activated = false
+
+local function toggle()
+    activated = not activated
+    button.Text = activated and 'SPAM: ON' or 'SPAM: OFF'
+    button.BackgroundColor3 = activated and Color3.fromRGB(135, 206, 250) or Color3.fromRGB(0, 34 / 255, 102 / 255)
+
+    while activated do
+        local args = {
+            [1] = 1.5,
+            [2] = CFrame.new(-254.2939910888672, 112.13581848144531, -119.27256774902344) * angles
+                CFrame.Angles(-2.029526710510254, 0.5662040710449219, 2.314905881881714),
+                local targetPosition = Vector3.new(-273.400146484375, -724.8031005859375, -20.92414093017578)
+                ParryAttempt:FireServer(1.5, parryCFrame, {["2617721424"] = targetPosition}, {910, 154})
+            [3] = {
+                ["2617721424"] = Vector3.new(-273.400146484375, -724.8031005859375, -20.92414093017578) local targetPosition = Vector3.new(-273.400146484375, -724.8031005859375, -20.92414093017578)
+            },
+            [4] = {
+                [1] = 910,
+                [2] = 154
+            }
+        }
+        game:GetService("ReplicatedStorage").Remotes.ParryAttempt:FireServer(unpack(args)
+        game:GetService('RunService').Heartbeat:Wait()
+    end
+end
+
+button.MouseButton1Click:Connect(toggle)
+local UserInputService = game:GetService("UserInputService")
+      local eKeyPressed = false
+      UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+        if input.KeyCode == Enum.KeyCode.E and not gameProcessedEvent then
+          eKeyPressed = true
+          toggle()
+        end
+      end)
+      UserInputService.InputEnded:Connect(function(input, gameProcessedEvent)
+        if input.KeyCode == Enum.KeyCode.E then
+          eKeyPressed = false
+        end
+      end)
+     
+   end
+})
+  
+   local KeybindSpamParry = Tabs.Combat:AddKeybind("KeybindSpamParry", {
+        Title = "Spam Parry (Recommended For 1v1)",
+        Mode = "Toggle", -- Always, Toggle, Hold
+        -- Default toogle E
+        Default = "E", -- String as the name of the keybind (MB1, MB2 for mouse buttons)
+        -- Occurs when the keybind is clicked, Value is `true`/`false`
+        Callback = function(Value)
+            spamParry = not spamParry
+            coroutine.wrap(SpamParry)()
+        end
+    })
+
+    local Toggle = Tabs.Combat:AddToggle("ParryArea", {
+        Title = "Hitbox",
+        Default = false
+    })
+
+    ToggleParry:OnChanged(function()
+        if Options.ParryArea.Value then
+            getgenv().ViewParryArea = true
+            ViewParryArea()
+        else
+            getgenv().ViewParryArea = false
+            ViewParryArea()
+        end
+    end)
+
+    Tabs.ESP:AddButton({
+        Title = "Esp box",
+        Description = "",
+        Callback = function()
+          loadstring(game:HttpGet(
+              'https://raw.githubusercontent.com/legoLol/lineboxkskkdksks/main/lineboxkskdksk'))()
+        end
+    })
+
+          
+    Tabs.ESP:AddButton({
+      Title = "Rgb player",
+      Description = "",
+      Callback = function()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/Xeno01010/Zeno-Hub/main/HightLighttasdfa"))()
+        end    
+})
+
+    Tabs.ESP:AddButton({
+        Title = "Player Aura",
+        Description = "",
+        Callback = function()
+          loadstring(game:HttpGet(
+              'https://raw.githubusercontent.com/legoLol/aurakdjksksks/main/auraksjsjsj'))()
+        end
+    })            
+
+    local ToggleNight = Tabs.World:AddToggle("NightMode", {
+        Title = "Night-Mode",
+        Default = false
+    })
+    ToggleNight:OnChanged(function()
+        if Options.NightMode.Value then
+            nightMode()
+        else
+            day()
        end
-   end,
+    end)
 
-   machine_execute = function(self)
-       RunService.Heartbeat:Connect(function()
-           self.find_ball(self)
-       end)
-       Players.LocalPlayer.CharacterAdded:Connect(function(Character)
-           self.character = Character
-       end)
-   end
-}, {
-   __call = function(self)
-       self.machine_execute(self)
-   end
-})("one piece roblox game --- [ red devil ] : kiro DZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ LOL")
-end})
+   Tabs.World:AddButton({
+        Title = "Remove-Texture",
+        Description = "",
+        Callback = function()
+            loadstring(game:HttpGet(
+                "https://raw.githubusercontent.com/kehxyzdev/nomeaqui/main/nomeaqui"))()
+        end
+   })
+
+    Tabs.World:AddButton({
+        Title = "Clash-Delete",
+        Description = "",
+        Callback = function()
+            while game:GetService("RunService").Heartbeat:wait() do
+                local workspaceItems = game.Workspace:GetChildren()
+                for i = 1, #workspaceItems do
+                    local item = workspaceItems[i]
+                    if item.Name == "clash" then
+                        item:Destroy()
+                    end
+                end
+            end
+        end
+    })
+  
+    Tabs.Misc:AddButton({
+        Title = "Mobile Keyboard",
+        Description = "Pc spam: E",
+        Callback = function()
+            loadstring(game:HttpGet(
+                "https://gist.githubusercontent.com/RedZenXYZ/4d80bfd70ee27000660e4bfa7509c667/raw/da903c570249ab3c0c1a74f3467260972c3d87e6/KeyBoard%20From%20Ohio%20Fr%20Fr"))()
+        end
+    })
+end
