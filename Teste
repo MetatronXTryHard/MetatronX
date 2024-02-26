@@ -227,3 +227,25 @@ Toggle:OnChanged(function(value)
   getgenv().ViewParryArea = value
   ViewParryArea()
 end)
+
+local function SpamParry()
+  while spamParry do
+      local targetPosition = Vector3.new(-273.400146484375, -724.8031005859375, -20.92414093017578)
+      local angles = CFrame.Angles(-2.029526710510254, 0.5662040710449219, 2.314905881881714)
+      local parryCFrame = CFrame.new(-254.2939910888672, 112.13581848144531, -119.27256774902344) * angles
+      ParryAttempt:FireServer(1.5, parryCFrame, {["2617721424"] = targetPosition}, {910, 154})
+      RunService.Heartbeat:Wait()
+  end
+end
+
+local KeybindSpamParry = Tabs.Combat:AddKeybind("KeybindSpamParry", {
+  Title = "Spam Parry (Recommended For 1v1)",
+  Mode = "Toggle", -- Always, Toggle, Hold
+  -- Default toogle E
+  Default = "E", -- String as the name of the keybind (MB1, MB2 for mouse buttons)
+  -- Occurs when the keybind is clicked, Value is `true`/`false`
+  Callback = function(Value)
+      spamParry = not spamParry
+      coroutine.wrap(SpamParry)()
+  end
+})
