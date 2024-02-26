@@ -23,10 +23,6 @@ InterfaceManager:SetLibrary(Fluent)
 InterfaceManager:SetFolder("FluentScriptHub")
 InterfaceManager:BuildInterfaceSection(Tabs.Settings)
 Window:SelectTab(1)
-local Parry = Tabs.P:AddToggle("Parry", {Title = "Auto Parry", Default = false })
-Toggle:OnChanged(function(value)
-print"MTX On Top"
-end)
 -- Botao Para mobile suport
 local CheckMobile = function()
   if
@@ -100,3 +96,11 @@ else
     Fluent.Window:Minimize()
   end)
 end  
+--Script
+Tabs.P:AddButton({
+  Title = "Auto Spam Parry [In Dev]",
+  Description = "Basicamente Um Ultra Spam Parry",
+  Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoSpamMTXClient"))()
+  end
+})
