@@ -174,7 +174,7 @@ local function ViewParryArea()
     if tonumber(Range) then
       BallParry.Size = Vector3.new(Range, Range, Range)
       if plrChar and plrChar:FindFirstChild("Highlight") then
-        BallParry.BrickColor = BrickColor.new("Really red")
+        BallParry.BrickColor = BrickColor.new("Really black")
       else
         BallParry.BrickColor = BrickColor.new("Royal purple")
       end
@@ -201,8 +201,8 @@ Toggle:OnChanged(function()
     ["AutoParry"] = true,
     ["PingBased"] = false,
     ["PingBasedOffset"] = 5,
-    ["DistanceToParry"] = 0.7,
-    ["BallSpeedCheck"] = true,
+    ["DistanceToParry"] = 0.6,
+    ["BallSpeedCheck"] = false,
   }
   
   local Players = game:GetService("Players")
