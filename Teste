@@ -1,7 +1,3 @@
-game:GetService("ReplicatedStorage").Security.RemoteEvent:Destroy()
-game:GetService("ReplicatedStorage").Security[""]:Destroy()
-game:GetService("ReplicatedStorage").Security:Destroy()
-game:GetService("Players").LocalPlayer.PlayerScripts.Client.DeviceChecker:Destroy()
 --Anti Cheat Disabler
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
