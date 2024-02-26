@@ -122,7 +122,7 @@ UICorner_2.Parent = PC
 
 Mobile.Name = "Mobile"
 Mobile.Parent = MENUNotification
-Mobile.BackgroundColor3 = Color3.fromRGB(75, 151, 226)
+Mobile.BackgroundColor3 = Color3.fromRGB(149, 0, 255)
 Mobile.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Mobile.BorderSizePixel = 0
 Mobile.Position = UDim2.new(0.406779647, 0, 0.570927858, 0)
