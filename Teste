@@ -100,7 +100,7 @@ Toggle:OnChanged(function()
     ["AutoParry"] = true,
     ["PingBased"] = true,
     ["PingBasedOffset"] = 0,
-    ["DistanceToParry"] = 1,
+    ["DistanceToParry"] = 0.8,
     ["BallSpeedCheck"] = true,
   }
   
@@ -159,4 +159,10 @@ Tabs.P:AddButton({
   Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoSpamMTXClient"))()
   end
+})
+Fluent:Notify({
+  Title = "MTX Client ❕",
+  Content = "Script Caregado...",
+  SubContent = "AntiCheat Bypass Actived ☠", -- Optional
+  Duration = 5 -- Set to nil to make the notification not disappear
 })
