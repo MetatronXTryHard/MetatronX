@@ -105,8 +105,8 @@ Toggle:OnChanged(function()
   getgenv().Paws = {
     ["AutoParry"] = true,
     ["PingBased"] = true,
-    ["PingBasedOffset"] = 15,
-    ["DistanceToParry"] = 0.9,
+    ["PingBasedOffset"] = 5,
+    ["DistanceToParry"] = 0.7,
     ["BallSpeedCheck"] = true,
   }
   
