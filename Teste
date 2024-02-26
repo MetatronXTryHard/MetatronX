@@ -158,11 +158,25 @@ Toggle:OnChanged(function()
        end
   end) 
 end)
-
 Tabs.P:AddButton({
   Title = "Auto Spam Parry [In Dev]",
   Description = "Basicamente Um Ultra Spam Parry",
   Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoSpamMTXClient"))()
+  end
+})
+Tabs.P:AddButton({
+  Title = "Clash-Delete",
+  Description = "",
+  Callback = function()
+    while game:GetService("RunService").Heartbeat:wait() do
+      local workspaceItems = game.Workspace:GetChildren()
+      for i = 1, #workspaceItems do
+          local item = workspaceItems[i]
+          if item.Name == "clash" then
+              item:Destroy()
+          end
+      end
+  end 
   end
 })
