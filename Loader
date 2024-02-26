@@ -114,7 +114,7 @@ PC.BorderSizePixel = 0
 PC.Position = UDim2.new(0.0271186437, 0, 0.570928037, 0)
 PC.Size = UDim2.new(0, 105, 0, 28)
 PC.Font = Enum.Font.SourceSansBold
-PC.Text = "PC"
+PC.Text = "Load"
 PC.TextColor3 = Color3.fromRGB(255, 255, 255)
 PC.TextSize = 17.000
 
@@ -128,7 +128,7 @@ Mobile.BorderSizePixel = 0
 Mobile.Position = UDim2.new(0.406779647, 0, 0.570927858, 0)
 Mobile.Size = UDim2.new(0, 105, 0, 28)
 Mobile.Font = Enum.Font.SourceSansBold
-Mobile.Text = "Mobile"
+Mobile.Text = "Soon"
 Mobile.TextColor3 = Color3.fromRGB(255, 255, 255)
 Mobile.TextSize = 17.000
 
@@ -160,7 +160,7 @@ local function HSXJS_fake_script() -- PC.LocalScript
 
 	script.Parent.MouseButton1Down:connect(function()
 	
-		loadstring(game:HttpGet(('https://raw.githubusercontent.com/cool83birdcarfly02six/PCGAMECHECKERLOADER/main/README.md'),true))()
+		--coloca algum script ak
 	
 		DEVICECHOOSER:Destroy()
 	
@@ -176,7 +176,7 @@ local function UAKLWS_fake_script() -- Mobile.LocalScript
 
 	script.Parent.MouseButton1Down:connect(function()
 	
-		loadstring(game:HttpGet(('https://raw.githubusercontent.com/cool83birdcarfly02six/MobileGameLoader/main/README.md'),true))()
+		--coloca algum script ak
 	
 		DEVICECHOOSER:Destroy()
 	
