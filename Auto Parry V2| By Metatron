@@ -1,7 +1,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoParry%20MTXClient"))()
 game.StarterGui:SetCore("SendNotification", {
-Title = "Coded By metatron_exe", 
-Text = "Loading..." ,
+Title = "Made By metatron_exe And", 
+Text = "" ,
 Icon = "http://www.roblox.com/asset/?id=9999999",
 Duration = 2.5
  })
