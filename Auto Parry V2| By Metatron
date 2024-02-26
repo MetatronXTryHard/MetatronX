@@ -1,8 +1,0 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoParry%20MTXClient"))()
-game.StarterGui:SetCore("SendNotification", {
-Title = "Made By metatron_exe And", 
-Text = "And",
-Icon = "http://www.roblox.com/asset/?id=9999999",
-Duration = 2.5
- })
-print("By MTX Team")
