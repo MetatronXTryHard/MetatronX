@@ -238,14 +238,12 @@ local function SpamParry()
   end
 end
 
-local KeybindSpamParry = Tabs.Combat:AddKeybind("KeybindSpamParry", {
-  Title = "Spam Parry (Recommended For 1v1)",
-  Mode = "Toggle", -- Always, Toggle, Hold
-  -- Default toogle E
-  Default = "E", -- String as the name of the keybind (MB1, MB2 for mouse buttons)
-  -- Occurs when the keybind is clicked, Value is `true`/`false`
-  Callback = function(Value)
-      spamParry = not spamParry
-      coroutine.wrap(SpamParry)()
+local KeybindSpamParry = Tabs.P:AddKeybind("Keybind", {
+  Title = "Spam Parry Manual",
+  Mode = "Hold", -- Always, Toggle, Hold
+  Default = "E", 
+  ChangedCallback = function(value)
+    spamParry = not spamParry
+    coroutine.wrap(SpamParry)()
   end
 })
