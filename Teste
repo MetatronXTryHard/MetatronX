@@ -19,6 +19,12 @@ InterfaceManager:SetLibrary(Fluent)
 InterfaceManager:SetFolder("FluentScriptHub")
 InterfaceManager:BuildInterfaceSection(Tabs.Settings)
 Window:SelectTab(1)
+Fluent:Notify({
+  Title = "MTX Client ❕",
+  Content = "Script Caregado...",
+  SubContent = "AntiCheat Bypass Actived ☠", -- Optional
+  Duration = 5 -- Set to nil to make the notification not disappear
+})
 -- Botao Para mobile suport
 local CheckMobile = function()
   if
@@ -99,8 +105,8 @@ Toggle:OnChanged(function()
   getgenv().Paws = {
     ["AutoParry"] = true,
     ["PingBased"] = true,
-    ["PingBasedOffset"] = 0,
-    ["DistanceToParry"] = 0.8,
+    ["PingBasedOffset"] = 15,
+    ["DistanceToParry"] = 0.9,
     ["BallSpeedCheck"] = true,
   }
   
@@ -159,10 +165,4 @@ Tabs.P:AddButton({
   Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoSpamMTXClient"))()
   end
-})
-Fluent:Notify({
-  Title = "MTX Client ❕",
-  Content = "Script Caregado...",
-  SubContent = "AntiCheat Bypass Actived ☠", -- Optional
-  Duration = 5 -- Set to nil to make the notification not disappear
 })
