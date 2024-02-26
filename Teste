@@ -97,7 +97,8 @@ Tabs.P:AddButton({
   Title = "Auto Parry [In Dev]",
   Description = "Defenda AutoMaticamente",
   Callback = function()
-    loadstring(game:HttpGet("https://scriptblox.com/raw/UPD-Blade-Ball-op-autoparry-with-visualizer-8652"))()
+    getgenv().visualizer = AutoFarmSwanGlasses_Hop
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/main/RedCircleBlock"))()
   end
 })
 Tabs.P:AddButton({
