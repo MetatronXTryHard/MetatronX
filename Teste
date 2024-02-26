@@ -101,7 +101,7 @@ getgenv().Paws = {
   ["AutoParry"] = true,
   ["PingBased"] = true,
   ["PingBasedOffset"] = 0,
-  ["DistanceToParry"] = 0.5,
+  ["DistanceToParry"] = 1,
   ["BallSpeedCheck"] = true,
 }
 
