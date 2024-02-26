@@ -1,41 +1,3 @@
-local player = game.Players.LocalPlayer
-
-local allowedNames = {
-
-    "blackhub6",
-
-    "carrinhadoboblox",
-
-    "UniversallLego",
-
-    "pestecan1bal",
-
-    "KFC1_MICHAEL",
-    
-    "seuv075",
-    
-    "afonsinhox7",
-    
-    "kaikericarteeee",
-   
-    "Roberto35366",
-
-} -- Adicione os nomes permitidos aqui
-
-local isWhitelisted = false
-for _, allowedName in pairs(allowedNames) do
-    if player.Name == allowedName then
-        isWhitelisted = true
-        break -- Se encontrou um nome permitido, sai do loop
-    end
-end
-
-if isWhitelisted then
-    print("Whitelisted")
-else
- player:Kick("saia veado")
-end
-
 local typeof = typeof
 
 local hookfunc = hookfunction
@@ -800,44 +762,16 @@ local function nightMode()
 
   estrelasModel.Parent = game.Workspace
 
-  
-
    end
-
-
-
 local function day()
-
-  
-
-  
-
     local lighting = game:GetService("Lighting")
 
       lighting.TimeOfDay = 14
 
       lighting.Ambient = Color3.new(1, 1, 1) 
-
-  
-
    end
-
-
-
-  
-
-
-
 do
-
-
-  
-
-  
-
     -- Options.MyToggle:SetValue(false)
-
-  
 
     Tabs.Combat:AddButton({
 
@@ -847,27 +781,18 @@ do
 
         Callback = function()
 
-          loadstring(game:HttpGet(
-
-              'https://raw.githubusercontent.com/kehxyzdev/xhsjxnxnsjjsnz/main/xhzhusbxsbjsjs'))()
+          loadstring(game:HttpGet('https://raw.githubusercontent.com/kehxyzdev/xhsjxnxnsjjsnz/main/xhzhusbxsbjsjs'))()
 
         end
 
     })
-
-  
-
-     
-
      Tabs.Combat:AddButton({
         Title = "Auto-Spam",
         Description = "Click just once.",
         Callback = function()
-           loadstring(game:HttpGet(
-                "https://raw.githubusercontent.com/legoLol/spamksjdksks/main/spamkdjskxj"))()
+           loadstring(game:HttpGet("https://raw.githubusercontent.com/legoLol/spamksjdksks/main/spamkdjskxj"))()
         end
      })
-
    Tabs.Combat:AddButton({
         Title = "Spam-Parry (Mobile)",
         Description = "",
@@ -876,7 +801,6 @@ do
 gui.ResetOnSpawn = false
 gui.Name = 'Berserker'
 gui.Parent = game.CoreGui
-
 local frame = Instance.new('Frame')
 frame.Position = UDim2.new(0.5, -70, 0.4, -60)
 frame.Size = UDim2.new(0, 140, 0, 120)
@@ -886,21 +810,17 @@ frame.BorderSizePixel = 0
 frame.Active = true
 frame.Draggable = true
 frame.Parent = gui
-
 local corner2 = Instance.new('UICorner')
 corner2.CornerRadius = UDim.new(0, 10)
 corner2.Parent = frame
-
 local topBar = Instance.new('Frame')
 topBar.Size = UDim2.new(1, 0, 0, 30)
 topBar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 topBar.BorderSizePixel = 0
 topBar.Parent = frame
-
 local corner4 = Instance.new('UICorner')
 corner4.CornerRadius = UDim.new(0, 10)
 corner4.Parent = topBar
-
 local titleLabel = Instance.new('TextLabel')
 titleLabel.Size = UDim2.new(1, -6, 1, -6)
 titleLabel.Position = UDim2.new(0, 3, 0, 3)
@@ -910,11 +830,9 @@ titleLabel.Font = Enum.Font.GothamBold
 titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 titleLabel.TextSize = 14
 titleLabel.Parent = topBar
-
 local corner = Instance.new('UICorner')
 corner.CornerRadius = UDim.new(0, 10)
 corner.Parent = titleLabel
-
 local button = Instance.new('TextButton')
 button.Text = 'SPAM: OFF'
 button.Size = UDim2.new(1, -20, 0, 50)
@@ -926,18 +844,14 @@ button.Font = Enum.Font.GothamSemibold
 button.TextColor3 = Color3.fromRGB(255, 255, 255)
 button.TextSize = 14
 button.Parent = frame
-
 local corner3 = Instance.new('UICorner')
 corner3.CornerRadius = UDim.new(0, 10)
 corner3.Parent = button
-
 local activated = false
-
 local function toggle()
     activated = not activated
     button.Text = activated and 'SPAM: ON' or 'SPAM: OFF'
     button.BackgroundColor3 = activated and Color3.fromRGB(135, 206, 250) or Color3.fromRGB(0, 34 / 255, 102 / 255)
-
     while activated do
         local args = {
             [1] = 1.5,
@@ -957,7 +871,6 @@ local function toggle()
         game:GetService('RunService').Heartbeat:Wait()
     end
 end
-
 button.MouseButton1Click:Connect(toggle)
 local UserInputService = game:GetService("UserInputService")
       local eKeyPressed = false
@@ -975,7 +888,6 @@ local UserInputService = game:GetService("UserInputService")
      
    end
 })
-  
    local KeybindSpamParry = Tabs.Combat:AddKeybind("KeybindSpamParry", {
         Title = "Spam Parry (Recommended For 1v1)",
         Mode = "Toggle", -- Always, Toggle, Hold
@@ -987,12 +899,10 @@ local UserInputService = game:GetService("UserInputService")
             coroutine.wrap(SpamParry)()
         end
     })
-
     local Toggle = Tabs.Combat:AddToggle("ParryArea", {
         Title = "Hitbox",
         Default = false
     })
-
     ToggleParry:OnChanged(function()
         if Options.ParryArea.Value then
             getgenv().ViewParryArea = true
@@ -1002,7 +912,6 @@ local UserInputService = game:GetService("UserInputService")
             ViewParryArea()
         end
     end)
-
     Tabs.ESP:AddButton({
         Title = "Esp box",
         Description = "",
@@ -1010,9 +919,7 @@ local UserInputService = game:GetService("UserInputService")
           loadstring(game:HttpGet(
               'https://raw.githubusercontent.com/legoLol/lineboxkskkdksks/main/lineboxkskdksk'))()
         end
-    })
-
-          
+    })    
     Tabs.ESP:AddButton({
       Title = "Rgb player",
       Description = "",
@@ -1020,7 +927,6 @@ local UserInputService = game:GetService("UserInputService")
      loadstring(game:HttpGet("https://raw.githubusercontent.com/Xeno01010/Zeno-Hub/main/HightLighttasdfa"))()
         end    
 })
-
     Tabs.ESP:AddButton({
         Title = "Player Aura",
         Description = "",
@@ -1028,8 +934,7 @@ local UserInputService = game:GetService("UserInputService")
           loadstring(game:HttpGet(
               'https://raw.githubusercontent.com/legoLol/aurakdjksksks/main/auraksjsjsj'))()
         end
-    })            
-
+    })           
     local ToggleNight = Tabs.World:AddToggle("NightMode", {
         Title = "Night-Mode",
         Default = false
@@ -1041,7 +946,6 @@ local UserInputService = game:GetService("UserInputService")
             day()
        end
     end)
-
    Tabs.World:AddButton({
         Title = "Remove-Texture",
         Description = "",
@@ -1050,7 +954,6 @@ local UserInputService = game:GetService("UserInputService")
                 "https://raw.githubusercontent.com/kehxyzdev/nomeaqui/main/nomeaqui"))()
         end
    })
-
     Tabs.World:AddButton({
         Title = "Clash-Delete",
         Description = "",
@@ -1066,13 +969,11 @@ local UserInputService = game:GetService("UserInputService")
             end
         end
     })
-  
     Tabs.Misc:AddButton({
         Title = "Mobile Keyboard",
         Description = "Pc spam: E",
         Callback = function()
-            loadstring(game:HttpGet(
-                "https://gist.githubusercontent.com/RedZenXYZ/4d80bfd70ee27000660e4bfa7509c667/raw/da903c570249ab3c0c1a74f3467260972c3d87e6/KeyBoard%20From%20Ohio%20Fr%20Fr"))()
+            loadstring(game:HttpGet("https://gist.githubusercontent.com/RedZenXYZ/4d80bfd70ee27000660e4bfa7509c667/raw/da903c570249ab3c0c1a74f3467260972c3d87e6/KeyBoard%20From%20Ohio%20Fr%20Fr"))()
         end
     })
 end
