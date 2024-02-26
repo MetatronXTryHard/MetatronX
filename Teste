@@ -136,7 +136,7 @@ local function ViewParryArea()
   BallParry.CastShadow = false
   BallParry.CanCollide = false
   BallParry.Anchored = true
-  BallParry.BrickColor = BrickColor.new("Really white")
+  BallParry.BrickColor = BrickColor.new("Royal purple")
   BallParry.Shape = "Ball"
 
   local PartFind = workspace:FindFirstChild(BallParry.Name)
@@ -176,7 +176,7 @@ local function ViewParryArea()
       if plrChar and plrChar:FindFirstChild("Highlight") then
         BallParry.BrickColor = BrickColor.new("Really red")
       else
-        BallParry.BrickColor = BrickColor.new("Really white")
+        BallParry.BrickColor = BrickColor.new("Royal purple")
       end
       if Alive:FindFirstChild(Player.Name) then
         if plrPP then
@@ -275,7 +275,7 @@ Tabs.P:AddButton({
   end 
   end
 })
-local Toggle = Tabs.P:AddToggle("Teste", {Title = "Teste", Default = false })
+local Toggle = Tabs.P:AddToggle("Teste", {Title = "ViewArea", Default = false })
 
 Toggle:OnChanged(function(value)
   getgenv().ViewParryArea = value
