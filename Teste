@@ -97,7 +97,6 @@ Tabs.P:AddButton({
   Title = "Auto Parry [In Dev]",
   Description = "Defenda AutoMaticamente",
   Callback = function()
-    Print"Coded By MTX Team"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoParry%20MTXClient"))()
     game.StarterGui:SetCore("SendNotification", {
       Title = "By metatron_exe", 
