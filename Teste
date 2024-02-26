@@ -131,7 +131,7 @@ local upgrades = localPlayer.Upgrades
 
 local function ViewParryArea()
   local BallParry = Instance.new("Part", workspace)
-  BallParry.Name = "Parry Range <redz hub>"
+  BallParry.Name = "Parry Range <MTX Client>"
   BallParry.Material = "ForceField"
   BallParry.CastShadow = false
   BallParry.CanCollide = false
@@ -199,7 +199,7 @@ local Toggle = Tabs.P:AddToggle("AutoParry", {Title = "Auto Parry", Default = fa
 Toggle:OnChanged(function()
   getgenv().Paws = {
     ["AutoParry"] = true,
-    ["PingBased"] = true,
+    ["PingBased"] = false,
     ["PingBasedOffset"] = 5,
     ["DistanceToParry"] = 0.7,
     ["BallSpeedCheck"] = true,
