@@ -34,7 +34,7 @@ Fluent:Notify({
   Duration = 5 -- Set to nil to make the notification not disappear
 })
 
-local Slider = M.Main:AddSlider("Slider", {
+local Slider = Tabs.M:AddSlider("Slider", {
   Title = "Walk speed",
   Description = "",
   Default = 16,
@@ -45,7 +45,7 @@ local Slider = M.Main:AddSlider("Slider", {
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
   end
 })
-local Slider = M.Main:AddSlider("Slider", {
+local Slider = Tabs.M:AddSlider("Slider", {
   Title = "Jump speed",
   Description = "",
   Default = 50,
