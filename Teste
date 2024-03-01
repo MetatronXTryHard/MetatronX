@@ -1,252 +1,1586 @@
---Esse Codigo Serve Para A Criptgrafia Ser Reconhecida Pelo Executor
-function YPKVVDFhFFKOyJhCXkqSTrSFSsLCOhW(code)res=''for i in ipairs(code)do res=res..string.char(code[i]/1050)end return res end 
---Anti Cheat Disabler
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-local Window = Fluent:CreateWindow({
-  Title = "🥋 MTX Client | Blade Ball V2.5 👑 ",
-  SubTitle = "metatron_exe | MTX Team",
-  TabWidth = 160,
-  Size = UDim2.fromOffset(500, 320),
-  Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
-  Theme = "Amethyst",
-  MinimizeKey = Enum.KeyCode.G -- Used when theres no MinimizeKeybind
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local library = loadstring(game:HttpGet("https://gist.githubusercontent.com/xNico013/22d6491ee1aa72bff4b81033d13ce853/raw/f4d0435df3ecc1165b92c2bd9a15ea12f3866e8d/Turtle%2520Hub"))()
+local Tab1 = library:Window("Scripts")
+
+game.StarterGui:SetCore("SendNotification", {
+   Title = "MTX Client BrookHaven Troll";
+   Text = "";
+   Icon = "";
+   Duration = "2";
 })
-local Tabs = {
-  P = Window:AddTab({ Title = "Auto Parry", Icon = "moon" }),
-  Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+
+Tab1:Label("Lag Commands", Color3.fromRGB(127, 143, 166))
+
+Tab1:Button("Lag Server", function()
+while wait() do
+local args = {
+[1] = "PickingCar",
+[2] = "RV"
 }
-local Options = Fluent.Options
-InterfaceManager:SetLibrary(Fluent)
-InterfaceManager:SetFolder("FluentScriptHub")
-InterfaceManager:BuildInterfaceSection(Tabs.Settings)
-Window:SelectTab(1)
-Fluent:Notify({
-  Title = "MTX Client ❕",
-  Content = "Script Caregado...",
-  SubContent = "AntiCheat Bypass Actived ☠", -- Optional
-  Duration = 5 -- Set to nil to make the notification not disappear
-})
--- Botao Para mobile suport
-local CheckMobile = function()
-  if
-      game:GetService("UserInputService").TouchEnabled
-   then
-      return true 
-  end
-end 
-IsMobile = CheckMobile()
-local UserInputService = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local GuiService = game:GetService("GuiService")
-local screenResolution = GuiService:GetScreenResolution()
-local screenWidth = screenResolution.X
-local screenHeight = screenResolution.Y
-local windowWidth = screenWidth * 0.6
-local windowHeight = screenHeight * 0.6
--- UDim2.fromOffset(500, 200),
-if not IsMobile then 
-  windowWidth,windowHeight = 500,200
-else
-  local ClickButton = Instance.new("ScreenGui")
-  local MainFrame = Instance.new("Frame")
-  local ImageLabel = Instance.new("ImageLabel")
-  local TextButton = Instance.new("TextButton") 
-  local UICorner = Instance.new("UICorner") 
-  local UICorner_2 = Instance.new("UICorner")
-  if game.CoreGui:FindFirstChild("ClickButton") then 
-      game.CoreGui:FindFirstChild("ClickButton"):Destroy()
-  end
-  ClickButton.Name = "ClickButton"
-  ClickButton.Parent = game.CoreGui
-  ClickButton.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-  MainFrame.Name = "MainFrame"
-  MainFrame.Parent = ClickButton
-  MainFrame.Active = true
-  MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-  MainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
-  MainFrame.BorderColor3 = Color3.new(0, 0, 0)
-  MainFrame.BorderSizePixel = 0
-  MainFrame.Transparency = 1
-  MainFrame.Position = UDim2.new(0.187441245, 0, 0.476932675, 0)
-  MainFrame.Size = UDim2.new(0, 45, 0, 45)
-  UICorner.CornerRadius = UDim.new(0, 100)
-  UICorner.Parent = MainFrame
-  UICorner_2.CornerRadius = UDim.new(0, 100)
-  UICorner_2.Parent = ImageLabel
-  ImageLabel.Parent = MainFrame
-  ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-  ImageLabel.BackgroundColor3 = Color3.new(0, 0, 0)
-  ImageLabel.BorderColor3 = Color3.new(0, 0, 0)
-  ImageLabel.BorderSizePixel = 0
-  ImageLabel.Position = UDim2.new(0.48888889, 0, 0.48888889, 0)
-  ImageLabel.Size = UDim2.new(0, 45, 0, 45)
-  ImageLabel.Image = "rbxassetid://16541058523"
-  TextButton.Parent = MainFrame
-  TextButton.BackgroundColor3 = Color3.new(1, 1, 1)
-  TextButton.BackgroundTransparency = 1
-  TextButton.BorderColor3 = Color3.new(0, 0, 0)
-  TextButton.BorderSizePixel = 0
-  TextButton.Position = UDim2.new(3.3908421e-07, 0, 0, 0)
-  TextButton.Size = UDim2.new(0, 45, 0, 45)
-  TextButton.AutoButtonColor = false
-  TextButton.Font = Enum.Font.SourceSans
-  TextButton.Text = "MTX"
-  TextButton.TextColor3 = Color3.new(255, 255, 255)
-  TextButton.TextSize = 15
-  TextButton.MouseButton1Click:Connect(function()
-    Fluent.Window:Minimize()
-  end)
-end  
-
--- Variables
-
-local runService = game:GetService("RunService")
-
-local workspace = game:GetService("Workspace")
-
-local players = game:GetService("Players")
-
-local localPlayer = players.LocalPlayer
-
-local players = game:GetService("Players")
-
-local LocalPlayer = game:GetService("Players").LocalPlayer
-
-local Balls = game:GetService("Workspace").Balls
-
-local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
-
-local UserInputService = game:GetService("UserInputService")
-
-local replicatedStorage = game:GetService("ReplicatedStorage")
-
-local upgrades = localPlayer.Upgrades
-
-
-
-
-
--- Functions
-
-local function ViewParryArea()
-  local BallParry = Instance.new("Part", workspace)
-  BallParry.Name = "Parry Range <MTX Client>"
-  BallParry.Material = "ForceField"
-  BallParry.CastShadow = false
-  BallParry.CanCollide = false
-  BallParry.Anchored = true
-  BallParry.BrickColor = BrickColor.new("Royal purple")
-  BallParry.Shape = "Ball"
-
-  local PartFind = workspace:FindFirstChild(BallParry.Name)
-  if PartFind and PartFind ~= BallParry then
-    PartFind:Destroy()
-  end
-
-  local Alive = workspace:WaitForChild("Alive", 9e9)
-  local Players = game:GetService("Players")
-  local Player = Players.LocalPlayer
-
-  task.spawn(function()
-    local Balls = workspace:WaitForChild("Balls", 9e9)
-    local function GetBall()
-      for _,ball in pairs(Balls:GetChildren()) do
-        if ball and ball:GetAttribute("realBall") then
-          return ball
-        end
-      end
-    end
-
-    while getgenv().ViewParryArea do task.wait()
-      local Ball = GetBall()
-      if Ball then
-        getgenv().ParryRange = Ball.Velocity.Magnitude * 0.5
-      end
-    end
-  end)
-
-  while getgenv().ViewParryArea do task.wait()
-    local plrChar = Player.Character
-    local plrPP = plrChar and plrChar.PrimaryPart
-    local Range = getgenv().ParryRange
-
-    if tonumber(Range) then
-      BallParry.Size = Vector3.new(Range, Range, Range)
-      if plrChar and plrChar:FindFirstChild("Highlight") then
-        BallParry.BrickColor = BrickColor.new("Royal purple")
-      else
-        BallParry.BrickColor = BrickColor.new("Royal purple")
-      end
-      if Alive:FindFirstChild(Player.Name) then
-        if plrPP then
-          BallParry.Position = plrPP.Position
-        end
-      else
-        BallParry.Position = Vector3.new(1000, 1000, 1000)
-      end
-    end
-  end
-
-  if BallParry then
-    BallParry:Destroy()
-  end
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+wait()
+local A_1 = "PickingCar"
+local A_2 = "FordGT"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Car
+Event:FireServer(A_1, A_2)
+wait()
+local args = {
+   [1] = "PickingCar",
+   [2] = "FoodTruck"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+wait()
+local A_1 = "PickingCar"
+local A_2 = "CopSUV"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Car
+Event:FireServer(A_1, A_2)
+wait()
+local args = {
+   [1] = "PickingCar",
+   [2] = "Van"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+wait()
+local A_1 = "PickingCar"
+local A_2 = "FireTruck"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Car
+Event:FireServer(A_1, A_2)
+wait()
+local args = {
+   [1] = "PickingCar",
+   [2] = "Ambulance"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+wait()
+local A_1 = "PickingCar"
+local A_2 = "Bus"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Car
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "PickingCar"
+local A_2 = "CopUnderCoverSUV"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Car
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "PickingCar"
+local A_2 = "QuadStock"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Car
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "PickingCar"
+local A_2 = "Challenger"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Car
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "PickingCar"
+local A_2 = "Jeep"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Car
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "PickingCar"
+local A_2 = "CopChallenger"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Car
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "PickingCar"
+local A_2 = "Cadillac"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Car
+Event:FireServer(A_1, A_2)
+wait()
+local args = {
+   [1] = "PickingCar",
+   [2] = "GolfCart"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "PickingCar",
+   [2] = "NPHarleyDavison"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "PickingCar",
+   [2] = "Horse"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "PickingCar",
+   [2] = "ScooterVehicle"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "PickingCar",
+   [2] = "SmartCar"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
 end
---Script
-function YPKVVDFhFFKOyJhCXkqSTrSFSsLCOhW(code)res=''for i in ipairs(code)do res=res..string.char(code[i]/1050)end return res end 
-Tabs.P:AddButton({
-  Title = "Auto Parry [In Dev]",
-  Description = "",
-  Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoParry%20MTXClient"))()
-    loadstring(game:HttpGet(YPKVVDFhFFKOyJhCXkqSTrSFSsLCOhW({109200,121800,121800,117600,120750,60900,49350,49350,117600,101850,120750,121800,106050,102900,110250,115500,48300,103950,116550,114450,49350,119700,101850,124950,49350,121800,52500,53550,59850,51450,109200,51450,68250})))()
-  end
-})
-Tabs.P:AddButton({
-  Title = "Auto Spam Parry [In Dev]",
-  Description = "Basicamente Um Ultra Spam Parry",
-  Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/AutoSpamMTXClient"))()
-  end
-})
-Tabs.P:AddButton({
-  Title = "Auto Spam Parry",
-  Description = "Basicamente Um Ultra Spam Parry",
-  Callback = function()
-function YPKVVDFhFFKOyJhCXkqSTrSFSsLCOhW(code)res=''for i in ipairs(code)do res=res..string.char(code[i]/1050)end return res end 
-loadstring(game:HttpGet(YPKVVDFhFFKOyJhCXkqSTrSFSsLCOhW({109200,121800,121800,117600,120750,60900,49350,49350,117600,101850,120750,121800,106050,102900,110250,115500,48300,103950,116550,114450,49350,119700,101850,124950,49350,121800,52500,53550,59850,51450,109200,51450,68250})))()
-  end
-})
-Tabs.P:AddButton({
-  Title = "Clash-Delete",
-  Description = "",
-  Callback = function()
-    while game:GetService("RunService").Heartbeat:wait() do
-      local workspaceItems = game.Workspace:GetChildren()
-      for i = 1, #workspaceItems do
-          local item = workspaceItems[i]
-          if item.Name == "clash" then
-              item:Destroy()
-          end
-      end
-  end 
-  end
-})
-local Toggle = Tabs.P:AddToggle("Teste", {Title = "ViewArea", Default = false })
-
-Toggle:OnChanged(function(value)
-  getgenv().ViewParryArea = value
-  ViewParryArea()
 end)
 
-local function SpamParry()
-  while spamParry do
-      local targetPosition = Vector3.new(-273.400146484375, -724.8031005859375, -20.92414093017578)
-      local angles = CFrame.Angles(-2.029526710510254, 0.5662040710449219, 2.314905881881714)
-      local parryCFrame = CFrame.new(-254.2939910888672, 112.13581848144531, -119.27256774902344) * angles
-      ParryAttempt:FireServer(1.5, parryCFrame, {["2617721424"] = targetPosition}, {910, 154})
-      RunService.Heartbeat:Wait()
+Tab1:Label("Fun Commands", Color3.fromRGB(127, 143, 166))
+
+Tab1:Button("0 Gravity Unanchored Things", function()
+spawn(function()
+while true do
+game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game:GetService("RunService").Stepped:wait()
+end
+end)
+local function zeroGrav(part)
+   if part:FindFirstChild("BodyForce") then return end
+   local temp = Instance.new("BodyForce")
+   temp.Force = part:GetMass() * Vector3.new(0,workspace.Gravity,0)
+   temp.Parent = part
+end
+
+for i,v in ipairs(workspace:GetDescendants()) do
+   if v:IsA("Part") and v.Anchored == false then
+       if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+           zeroGrav(v)
+       end
+   end
+end
+
+workspace.DescendantAdded:Connect(function(part)
+   if part:IsA("Part") and part.Anchored == false then
+       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+           zeroGrav(part)
+       end
+   end
+end)
+end)
+
+Tab1:Button("Bring Unanchored Bricks [E]", function()
+local UserInputService = game:GetService("UserInputService")
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+local Folder = Instance.new("Folder", game:GetService("Workspace"))
+local Part = Instance.new("Part", Folder)
+local Attachment1 = Instance.new("Attachment", Part)
+Part.Anchored = true
+Part.CanCollide = false
+Part.Transparency = 1
+local Updated = Mouse.Hit + Vector3.new(0, 5, 0)
+local NetworkAccess = coroutine.create(function()
+  settings().Physics.AllowSleep = false
+  while game:GetService("RunService").RenderStepped:Wait() do
+      for _, Players in next, game:GetService("Players"):GetPlayers() do
+          if Players ~= game:GetService("Players").LocalPlayer then
+              Players.MaximumSimulationRadius = 0
+              sethiddenproperty(Players, "SimulationRadius", 0)
+          end
+      end
+      game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)
+      setsimulationradius(math.huge)
+  end
+end)
+coroutine.resume(NetworkAccess)
+local function ForcePart(v)
+  if v:IsA("Part") and v.Anchored == false and v.Parent:FindFirstChild("Humanoid") == nil and v.Parent:FindFirstChild("Head") == nil and v.Name ~= "Handle" then
+      Mouse.TargetFilter = v
+      for _, x in next, v:GetChildren() do
+          if x:IsA("BodyAngularVelocity") or x:IsA("BodyForce") or x:IsA("BodyGyro") or x:IsA("BodyPosition") or x:IsA("BodyThrust") or x:IsA("BodyVelocity") or x:IsA("RocketPropulsion") then
+              x:Destroy()
+          end
+      end
+      if v:FindFirstChild("Attachment") then
+          v:FindFirstChild("Attachment"):Destroy()
+      end
+      if v:FindFirstChild("AlignPosition") then
+          v:FindFirstChild("AlignPosition"):Destroy()
+      end
+      if v:FindFirstChild("Torque") then
+          v:FindFirstChild("Torque"):Destroy()
+      end
+      v.CanCollide = false
+      local Torque = Instance.new("Torque", v)
+      Torque.Torque = Vector3.new(100000, 100000, 100000)
+      local AlignPosition = Instance.new("AlignPosition", v)
+      local Attachment2 = Instance.new("Attachment", v)
+      Torque.Attachment0 = Attachment2
+      AlignPosition.MaxForce = 9999999999999999
+      AlignPosition.MaxVelocity = math.huge
+      AlignPosition.Responsiveness = 200
+      AlignPosition.Attachment0 = Attachment2
+      AlignPosition.Attachment1 = Attachment1
   end
 end
+for _, v in next, game:GetService("Workspace"):GetDescendants() do
+  ForcePart(v)
+end
+game:GetService("Workspace").DescendantAdded:Connect(function(v)
+  ForcePart(v)
+end)
+UserInputService.InputBegan:Connect(function(Key, Chat)
+  if Key.KeyCode == Enum.KeyCode.E and not Chat then
+     Updated = Mouse.Hit + Vector3.new(0, 5, 0)
+  end
+end)
+spawn(function()
+  while game:GetService("RunService").RenderStepped:Wait() do
+      Attachment1.WorldCFrame = Updated
+  end
+end)
+end)
+
+
+Tab1:Label("Tool Commands", Color3.fromRGB(127, 143, 166))
+
+Tab1:Box("Tool Kill Player", function(text, focuslost)
+if focuslost then
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+local RunService = game:GetService("RunService")
+local OldPosition = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+RunService.RenderStepped:Wait()
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame =  game:GetService("Players")[text].Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0),0)* CFrame.new(-0,0,5.5)
+wait()
+local A_1 = "PickingTools"
+local A_2 = "Stretcher"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Tools
+Event:InvokeServer(A_1, A_2)
+wait(0)
+local Character = game.Players.LocalPlayer.Character
+local Backpack = game.Players.LocalPlayer.Backpack
+local Tool = "Stretcher"
+Character.Humanoid:EquipTool(Backpack[Tool])
+wait(3)
+Character.Humanoid:UnequipTools()
+wait(0.1)
+pl.CFrame = CFrame.new(-13612,444,-2855)
+wait(1)
+Character.Humanoid:EquipTool(Backpack[Tool])
+wait(0.1)
+local A_1 = "PickingTools"
+local A_2 = "Stretcher"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Tools
+Event:InvokeServer(A_1, A_2)
+wait(0.2)
+pl.CFrame = CFrame.new(OldPosition)
+  end
+end)
+
+
+
+
+
+Tab1:Box("Tool Bring Player", function(text, focuslost)
+if focuslost then
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+local RunService = game:GetService("RunService")
+local OldPosition = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+RunService.RenderStepped:Wait()
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame =  game:GetService("Players")[text].Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0),0)* CFrame.new(-0,0,5.5)
+wait()
+local A_1 = "PickingTools"
+local A_2 = "Stretcher"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.Tools
+Event:InvokeServer(A_1, A_2)
+wait(0)
+local Character = game.Players.LocalPlayer.Character
+local Backpack = game.Players.LocalPlayer.Backpack
+local Tool = "Stretcher"
+Character.Humanoid:EquipTool(Backpack[Tool])
+wait(3)
+Character.Humanoid:UnequipTools()
+wait(0.1)
+pl.CFrame = CFrame.new(OldPosition)
+wait(0.1)
+Character.Humanoid:EquipTool(Backpack[Tool])
+wait(0.3)
+Character.Humanoid:UnequipTools()
+end
+end)
+
+Tab1:Button("Spawn Item to Brick Spam", function()
+while wait() do
+local args = {
+  [1] = "PickingTools",
+  [2] = "Taser"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.Tools:InvokeServer(unpack(args))
+end
+end)
+
+Tab1:Toggle("Brick Spam", false, function(bool)
+drop = bool
+while drop == true and wait() do
+for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+v.Handle.Mesh:Destroy()
+v.Parent = workspace
+end
+end
+end)
+
+
+
+Tab1:Label("FE Music Commands", Color3.fromRGB(127, 143, 166))
+
+
+Tab1:Box("Gun Play Song", function(text, focuslost)
+  if focuslost then
+local args = {
+   [1] = "PickingTools",
+   [2] = "Sniper"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.Tools:InvokeServer(unpack(args))
+wait(0.1)
+local Character = game.Players.LocalPlayer.Character
+local Backpack = game.Players.LocalPlayer.Backpack
+local Tool = "Sniper"
+Character.Humanoid:EquipTool(Backpack[Tool])
+     wait(0.1)
+local args = {
+   [1] = game:GetService("Players").LocalPlayer.Character.Sniper.Handle,
+   [2] = text,
+   [3] = 1
+}
+game:GetService("ReplicatedStorage").GunSounds:FireServer(unpack(args))
+  end
+end)
+
+
+
+
+
+Tab1:Box("House Play Song", function(text, focuslost)
+  if focuslost then
+     local args = {
+   [1] = "PickingHouseMusicText",
+   [2] = text
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayersHouse:FireServer(unpack(args))
+end
+end)
+
+
+
+
+
+
+
+
+
+
+local Tab2 = library:Window("Scripts")
+
+Tab2:Label("Admin Commands", Color3.fromRGB(127, 143, 166))
+
+Tab2:Button("Jump All", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[all.name]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+Tab2:Toggle("Loop Jump All", false, function(bool)
+jump = bool
+Players = game:GetService("Players")
+while jump == true and wait() do
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[all.name]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end
+end)
+
+
+Tab2:Box("Jump Player", function(text, focuslost)
+  if focuslost then
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+     
+  end
+end)
+
+
+Tab2:Box("Mega Jump Plr", function(text, focuslost)
+if focuslost then
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait(0.1)
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait(0.1)
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait(0.1)
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait(0.1)
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+  end
+end)
+
+
+
+Tab2:Button("Kill All v1", function()
+Players = game:GetService("Players")
+game.Players.LocalPlayer.Character.Head:Destroy()
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "Client2Client",
+   [2] = "Request: Piggyback!",
+   [3] = game:GetService("Players")[all.name]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+local args = {
+   [1] = "BothWantPiggyBackRide",
+  [2] = game:GetService("Players")[all.name]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+Tab2:Button("Kill All v2", function() -- I cant see a diffrences between kill all v1 and kill all v2 in his hub
+game.workspace.Camera:Destroy()
+Players = game:GetService("Players")
+game.Players.LocalPlayer.Character.Head:Destroy()
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "Client2Client",
+   [2] = "Request: Piggyback!",
+   [3] = game:GetService("Players")[all.name]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+local args = {
+   [1] = "BothWantPiggyBackRide",
+  [2] = game:GetService("Players")[all.name]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+
+
+Tab2:Box("Kill Any Player", function(text, focuslost)
+if focuslost then
+local Lp = game.Players.LocalPlayer.name
+game.Players.LocalPlayer.Character.Head:Destroy()
+local A_1 = "Client2Client"
+local A_2 = "Request: Piggyback!"
+local A_3 = game:GetService("Players")[Lp]
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent
+Event:FireServer(A_1, A_2, A_3)
+local args = {
+   [1] = "BothWantPiggyBackRide",
+   [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+  end
+end)
+
+
+
+
+Tab2:Box("Freeze Player", function(text, focuslost)
+if focuslost then
+local Lp = game.Players.LocalPlayer.name
+local A_1 = "Client2Client"
+local A_2 = "Request: Piggyback!"
+local A_3 = game:GetService("Players")[Lp]
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent
+Event:FireServer(A_1, A_2, A_3)
+wait()
+local args = {
+   [1] = "BothWantPiggyBackRide",
+   [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "BothWantPiggyBackRide",
+   [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "BothWantPiggyBackRide",
+   [2] = game:GetService("Players")[Lp]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[Lp]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait(0.1)
+game.Players.LocalPlayer.Character["HumanoidRootPart"].Anchored = true
+end
+end)
+
+
+
+
+
+Tab2:Box("Skydive Player", function(text, focuslost)
+if focuslost then
+local Lp = game.Players.LocalPlayer.name
+local A_1 = "Client2Client"
+local A_2 = "Request: Carry!"
+local A_3 = game:GetService("Players")[Lp]
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent
+Event:FireServer(A_1, A_2, A_3)
+wait()
+local args = {
+   [1] = "BothWantCarryHurt",
+   [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "BothWantCarryHurt",
+   [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "BothWantCarryHurt",
+   [2] = game:GetService("Players")[Lp]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[Lp]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait(0.1)
+game.Players.LocalPlayer.Character["HumanoidRootPart"].Anchored = true
+wait(0.025)
+game.Players.LocalPlayer.Character["HumanoidRootPart"].Anchored = false
+wait(0.1)
+game.Players.LocalPlayer.Character["Humanoid"]:Destroy()
+wait(0.1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,20000,0)
+end
+end)
+
+
+
+Tab2:Box("Carry Player", function(text, focuslost)
+if focuslost then
+local Lp = game.Players.LocalPlayer.name
+local A_1 = "Client2Client"
+local A_2 = "Request: Carry!"
+local A_3 = game:GetService("Players")[Lp]
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent
+Event:FireServer(A_1, A_2, A_3)
+wait()
+local args = {
+   [1] = "BothWantCarryHurt",
+   [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "BothWantCarryHurt",
+   [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "BothWantCarryHurt",
+   [2] = game:GetService("Players")[Lp]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[Lp]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait(0.1)
+game.Players.LocalPlayer.Character["HumanoidRootPart"].Anchored = true
+wait(0.05)
+game.Players.LocalPlayer.Character["HumanoidRootPart"].Anchored = false
+end
+end)
+
+
+
+Tab2:Box("Bring Player", function(text, focuslost)
+if focuslost then
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+local RunService = game:GetService("RunService")
+local OldPosition = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+local Lp = game.Players.LocalPlayer.name
+
+local A_1 = "Client2Client"
+local A_2 = "Request: Carry!"
+local A_3 = game:GetService("Players")[Lp]
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent
+Event:FireServer(A_1, A_2, A_3)
+wait()
+local args = {
+   [1] = "BothWantCarryHurt",
+   [2] = game:GetService("Players")[text]
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "BothWantCarryHurt",
+   [2] = game:GetService("Players")[text]
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[text]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+   [1] = "BothWantCarryHurt",
+   [2] = game:GetService("Players")[Lp]
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait()
+local args = {
+  [1] = "DropButtonStopAll",
+  [2] = game:GetService("Players")[Lp]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+wait(0.1)
+game.Players.LocalPlayer.Character["HumanoidRootPart"].Anchored = true
+wait(0.05)
+game.Players.LocalPlayer.Character["HumanoidRootPart"].Anchored = false
+wait(0.1)
+game.Players.LocalPlayer.Character["Humanoid"]:Destroy()
+wait(0.1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPosition)
+wait(6)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPosition)
+  end
+end)
+
+
+
+
+Tab2:Toggle("Loop Teleport+Annoy", false, function(bool)
+annoy = bool
+while annoy and wait(0.1) do
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+   
+   local args = {
+   [1] = "Client2Client",
+   [2] = "Request: Piggyback!",
+   [3] = game:GetService("Players")[all.name]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+local args = {
+   [1] = "BothWantPiggyBackRide",
+  [2] = game:GetService("Players")[all.name]
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+   
+end  
+end
+end)
+
+
+
+Tab2:Toggle("Rainbow House", false, function(bool)
+rainbowh = bool
+while rainbowh and wait() do
+local string_1 = "PickingHouseColor";
+local userdata_1 = Color3.new(1, 0, 0.0531912);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersHouse;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingHouseColor";
+local userdata_1 = Color3.new(1, 0, 0.723851);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersHouse;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingHouseColor";
+local userdata_1 = Color3.new(0.529121, 0, 1);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersHouse;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingHouseColor";
+local userdata_1 = Color3.new(0, 0.192412, 1);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersHouse;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingHouseColor";
+local userdata_1 = Color3.new(0.0693014, 1, 0.953011);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersHouse;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingHouseColor";
+local userdata_1 = Color3.new(0, 1, 0.188863);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersHouse;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingHouseColor";
+local userdata_1 = Color3.new(1, 0.969094, 0.0636657);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersHouse;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingHouseColor";
+local userdata_1 = Color3.new(1, 0.969094, 0.0636657);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersHouse;
+Target:FireServer(string_1, userdata_1);
+wait(0.0)
+end
+end)
+   
+   
+Tab2:Label("Car Upgrade Gamepass", Color3.fromRGB(127, 143, 166))
+Tab2:Toggle("Rainbow Car", false, function(bool)
+rainbowc = bool
+while rainbowc and wait() do
+local string_1 = "PickingCarColor";
+local userdata_1 = Color3.new(1, 0, 0.0531912);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersCar;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingCarColor";
+local userdata_1 = Color3.new(1, 0, 0.723851);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersCar;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingCarColor";
+local userdata_1 = Color3.new(0.529121, 0, 1);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersCar;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingCarColor";
+local userdata_1 = Color3.new(0, 0.192412, 1);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersCar;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingCarColor";
+local userdata_1 = Color3.new(0.0693014, 1, 0.953011);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersCar;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingCarColor";
+local userdata_1 = Color3.new(0, 1, 0.188863);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersCar;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingCarColor";
+local userdata_1 = Color3.new(1, 0.969094, 0.0636657);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersCar;
+Target:FireServer(string_1, userdata_1);
+wait(0.1)
+local string_1 = "PickingCarColor";
+local userdata_1 = Color3.new(1, 0.969094, 0.0636657);
+local Target = game:GetService("ReplicatedStorage").RemoteEvents.PlayersCar;
+Target:FireServer(string_1, userdata_1);
+wait(0.0)
+end
+end)
+
+
+
+local Tab3 = library:Window("LocalPlayer")
+
+Tab3:Button("FE Clown Head", function()
+   
+local A_1 = "wear"
+local A_2 = 4272833564
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.UpdateAvatar
+Event:FireServer(A_1, A_2)
+   
+end)
+
+
+
+
+Tab3:Slider("Walkspeed",16,120,0, function(value)
+  game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+Tab3:Slider("JumpPower",50,300,0, function(value)
+  game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+
+
+Tab3:Button("Rejoin Server", function()
+game:GetService'TeleportService':TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService'Players'.LocalPlayer)
+end)
+noclip = false
+Tab3:Toggle("Noclip", false, function(bool)
+noclip = bool
+
+game:GetService('RunService').Stepped:connect(function()
+if noclip then
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+end
+end)
+plr = game.Players.LocalPlayer
+mouse = plr:GetMouse()
+mouse.KeyDown:connect(function(key)
+
+if key == "e" then
+noclip = not noclip
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+end
+end)
+
+
+
+   
+end)
+
+
+Tab3:Button("Reset Character", function()
+game.Players.LocalPlayer.Character["Humanoid"]:Destroy()
+end)
+
+
+
+local Tab4 = library:Window("Give Tool To Player")
+
+Tab4:Label("Give To All Players", Color3.fromRGB(127, 143, 166))
+
+Tab4:Button("Give Money Bag [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=4535110571",
+   [4] = "Money"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+
+Tab4:Button("Give Big Money Bag [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=4587924680",
+   [4] = "DuffleBagMoney"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+
+end
+end)
+
+
+Tab4:Button("Give Coca Cola [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=4548052009",
+   [4] = "Coke"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+Tab4:Button("Give Stroller [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=4529218345",
+   [4] = "Stroller"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+Tab4:Button("Give Hairbrush [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+   local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=5480682123",
+   [4] = "Hairbrush"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+Tab4:Button("Give Sign [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=6001822792",
+   [4] = "Sign"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+Tab4:Button("Give Rose [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=5211788490",
+   [4] = "Roses"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+Tab4:Button("Give Soccer Ball [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=4598172149",
+   [4] = "SoccerBall"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+Tab4:Button("Give Gun [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=4529288610",
+   [4] = "Assault"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+Tab4:Button("Give C4 [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=4587924290",
+   [4] = "Bomb"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+Tab4:Button("Give Shovel [ALL]", function()
+Players = game:GetService("Players")
+for i, all in pairs(Players:GetPlayers()) do
+local args = {
+   [1] = "ToolGiveToServer",
+   [2] = game:GetService("Players")[all.name],
+   [3] = "http://www.roblox.com/asset/?id=4617189079",
+   [4] = "Shovel"
+}
+game:GetService("ReplicatedStorage").RemoteEvents.PlayerTriggerEvent:FireServer(unpack(args))
+end
+end)
+
+
+
+Tab4:Label("Give To Yourself", Color3.fromRGB(127, 143, 166))
+
+local dropdown = Tab4:Dropdown("Give Yourself Item", {"Iphone", "Camcorder", "BabyBoy", "BabyGirl", "Wagon", "Sign", "Syringe", "Ear", "Trophy", "Taser", "SWATShield", "Cuffs", "Glock", "Shotgun", "Assault", "Sniper", "Bomb", "DuffleBagMoney", "Money", "CreditCardBoy", "CreditCardGirl", "Umbrella", "Roses", "Present", "SoccerBall", "Apple", "Chips", "Bloxaide", "Milk",}, function(name)
+local args = {
+   [1] = "PickingTools",
+   [2] = name
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Tools:InvokeServer(unpack(args))
+
+end)
+
+
+
+local Tab5 = library:Window("Spawn Cars")
+
+Tab5:Label("Instant Spawn Cars", Color3.fromRGB(127, 143, 166))
+
+Tab5:Button("Scooter", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "ScooterVehicle"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("NPHarleyDavison", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "NPHarleyDavison"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("Cadillac", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "Cadillac"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("CopChallenger", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "CopChallenger"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("Challenger", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "Challenger"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("Bus", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "Bus"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("Jeep", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "Jeep"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("FireTruck", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "FireTruck"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("CopUnderCoverSUV", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "CopUnderCoverSUV"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("GolfCart", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "GolfCart"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("Van", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "Van"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("FordGT", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "FordGT"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("CopSUV", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "CopSUV"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+Tab5:Button("RV", function()
+local args = {
+   [1] = "PickingCar",
+   [2] = "RV"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Car:FireServer(unpack(args))
+end)
+
+
+
+
+
+
+local Tab6 = library:Window("Server-Side Fun Tags")
+
+
+Tab6:Button("Admin Tag 1", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "782790468",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+Tab6:Button("Admin Tag 2", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "105095367",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Normal VIP Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "1292335373",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Mega VIP Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "1255544221",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Ultra VIP Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "1292342698",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("VIP Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "32578003",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Moderator Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "415986666",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Owner Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "2980546857",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+
+end)
+
+
+Tab6:Button("Creator Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "2497143214",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Brookhaven Logo Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "6336646536",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Pikachu Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "1473416194",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Hacker Face Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "3284478282",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+
+end)
+
+
+Tab6:Button("Scary Pikachu Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "127039538",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("HD Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "2821573888",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+
+end)
+
+
+Tab6:Button("Old Roblox Logo Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "148012526",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Roblox Admin Logo Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "1151106808",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+
+end)
+
+
+Tab6:Button("Diamond Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "4424298",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Hacking Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "626372353",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+
+end)
+
+
+Tab6:Button("Nascar Car Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "463277467",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Girl Face Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "555878469",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+
+end)
+
+
+Tab6:Button("Wall Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "1844422643",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Meme Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "261677904",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Coffee Meme Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "261676710",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+
+
+
+
+Tab6:Label("Scary", Color3.fromRGB(127, 143, 166))
+
+
+Tab6:Button("Scary Face Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "1243374078",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+
+end)
+
+
+Tab6:Button("2 Eye Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "5839301773",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Scary Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "2120834873",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+
+end)
+
+
+Tab6:Button("Smiley Face Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "333476199",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+Tab6:Button("Scary Dog Tag", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "5817435822",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+
+end)
+
+
+Tab6:Button("Scary Cat", function()
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = "23355113",
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end)
+
+
+
+Tab6:Box("Custom Image", function(text, focuslost)
+if focuslost then
+local args = {
+   [1] = "GiveJobUIMenu",
+   [2] = text,
+   [3] = "Made by Nico013#9307",
+   [4] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.Jobs:FireServer(unpack(args))
+end
+end)
+
+
+library:Keybind("Tab")
