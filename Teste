@@ -33,6 +33,29 @@ Fluent:Notify({
   SubContent = "", -- Optional
   Duration = 5 -- Set to nil to make the notification not disappear
 })
+
+local Slider = M.Main:AddSlider("Slider", {
+  Title = "Walk speed",
+  Description = "",
+  Default = 16,
+  Min = 16,
+  Max = 200,
+  Rounding = 1,
+  Callback = function(value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+  end
+})
+local Slider = M.Main:AddSlider("Slider", {
+  Title = "Jump speed",
+  Description = "",
+  Default = 50,
+  Min = 50,
+  Max = 200,
+  Rounding = 1,
+  Callback = function(value)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+  end
+})
 -- Botao Para mobile suport
 local CheckMobile = function()
   if
@@ -105,32 +128,4 @@ else
   TextButton.MouseButton1Click:Connect(function()
     Fluent.Window:Minimize()
   end)
-end  
-
-
-local Slider = M.Main:AddSlider("Slider", {
-  Title = "Walk speed",
-  Description = "",
-  Default = 16,
-  Min = 16,
-  Max = 200,
-  Rounding = 1,
-  Callback = function(value)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
-  end
-})
-
-
-local Slider = M.Main:AddSlider("Slider", {
-  Title = "Jump speed",
-  Description = "",
-  Default = 50,
-  Min = 50,
-  Max = 200,
-  Rounding = 1,
-  Callback = function(value)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
-  end
-})
-
-
+end
