@@ -19,8 +19,8 @@ local Window = Fluent:CreateWindow({
   MinimizeKey = Enum.KeyCode.G -- Used when theres no MinimizeKeybind
 })
 local Tabs = {
-  M = Window:AddTab({ Title = "Main", Icon = "moon" }),
-  Settings = Window:AddTab({ Title = "Settings", Icon = "settings." })
+  Main = Window:AddTab({ Title = "Main", Icon = "moon" }),
+  Settings = Window:AddTab({ Title = "Settings.", Icon = "settings" })
 }
 local Options = Fluent.Options
 InterfaceManager:SetLibrary(Fluent)
@@ -34,7 +34,7 @@ Fluent:Notify({
   Duration = 5 -- Set to nil to make the notification not disappear
 })
 
-local Slider = Tabs.M:AddSlider("Slider", {
+local Slider = Tabs.Main:AddSlider("Slider", {
   Title = "Walk speed",
   Description = "",
   Default = 16,
@@ -45,7 +45,7 @@ local Slider = Tabs.M:AddSlider("Slider", {
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
   end
 })
-local Slider = Tabs.M:AddSlider("Slider", {
+local Slider = Tabs.Main:AddSlider("Slider", {
   Title = "Jump speed",
   Description = "",
   Default = 50,
