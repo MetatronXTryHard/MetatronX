@@ -34,6 +34,18 @@ Fluent:Notify({
   Duration = 5 -- Set to nil to make the notification not disappear
 })
 
+
+local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Infinity Jump", Default = false })
+
+Toggle:OnChanged(function(value)
+  local InfiniteJumpEnabled = value
+  game:GetService("UserInputService").JumpRequest:connect(function()
+     if InfiniteJumpEnabled then
+        game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+     end
+     end)
+end)
+
 local Slider = Tabs.Main:AddSlider("Slider", {
   Title = "Walk speed",
   Description = "",
