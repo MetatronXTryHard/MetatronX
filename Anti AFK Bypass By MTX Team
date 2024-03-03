@@ -124,7 +124,7 @@ pinglabel.TextWrapped = true
 
 uselessframeone.Name = "uselessframeone"
 uselessframeone.Parent = MadeByMTXTeam
-uselessframeone.BackgroundColor3 = Color3.fromRGB(255, 255, 2)
+uselessframeone.BackgroundColor3 = Color3.fromRGB(128, 0, 255)
 uselessframeone.Position = UDim2.new(0.00444444455, 0, 0.243312627, 0)
 uselessframeone.Size = UDim2.new(0, 224, 0, 5)
 
