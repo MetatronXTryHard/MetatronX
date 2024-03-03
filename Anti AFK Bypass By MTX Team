@@ -39,13 +39,13 @@ UICornerw.Parent = MadeByMTXTeam
 
 DestroyButton.Name = "DestroyButton"
 DestroyButton.Parent = MadeByMTXTeam
-DestroyButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DestroyButton.BackgroundColor3 = Color3.fromRGB(128, 0, 255)
 DestroyButton.BackgroundTransparency = 1.000
 DestroyButton.Position = UDim2.new(0.871702373, 0, 0.0245379955, 0)
 DestroyButton.Size = UDim2.new(0, 27, 0, 15)
 DestroyButton.Font = Enum.Font.SourceSans
 DestroyButton.Text = "X"
-DestroyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+DestroyButton.TextColor3 = Color3.fromRGB(128, 0, 255)
 DestroyButton.TextSize = 14.000
 
 DestroyButton.MouseButton1Click:connect(function()
@@ -57,68 +57,68 @@ end)
 
 uselesslabelone.Name = "uselesslabelone"
 uselesslabelone.Parent = MadeByMTXTeam
-uselesslabelone.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelone.BackgroundColor3 = Color3.fromRGB(128, 0, 255)
 uselesslabelone.BackgroundTransparency = 1.000
 uselesslabelone.Position = UDim2.new(0.302473009, 0, 0, 0)
 uselesslabelone.Size = UDim2.new(0, 95, 0, 24)
 uselesslabelone.Font = Enum.Font.SourceSans
 uselesslabelone.Text = "Anti Afk By MTX Team"
-uselesslabelone.TextColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelone.TextColor3 = Color3.fromRGB(128, 0, 255)
 uselesslabelone.TextSize = 14.000
 
 timerlabel.Name = "timerlabel"
 timerlabel.Parent = MadeByMTXTeam
-timerlabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+timerlabel.BackgroundColor3 = Color3.fromRGB(128, 0, 255)
 timerlabel.BackgroundTransparency = 1.000
 timerlabel.Position = UDim2.new(0.65344125, 0, 0.68194294, 0)
 timerlabel.Size = UDim2.new(0, 60, 0, 24)
 timerlabel.Font = Enum.Font.SourceSans
 timerlabel.Text = "0:0:0"
-timerlabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+timerlabel.TextColor3 = Color3.fromRGB(128, 0, 255)
 timerlabel.TextSize = 14.000
 
 uselesslabeltwo.Name = "uselesslabeltwo"
 uselesslabeltwo.Parent = MadeByMTXTeam
-uselesslabeltwo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabeltwo.BackgroundColor3 = Color3.fromRGB(128, 0, 255)
 uselesslabeltwo.BackgroundTransparency = 1.000
 uselesslabeltwo.Position = UDim2.new(0.038864471, 0, 0.373806685, 0)
 uselesslabeltwo.Size = UDim2.new(0, 29, 0, 24)
 uselesslabeltwo.Font = Enum.Font.SourceSans
 uselesslabeltwo.Text = "Ping: "
-uselesslabeltwo.TextColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabeltwo.TextColor3 = Color3.fromRGB(128, 0, 255)
 uselesslabeltwo.TextSize = 14.000
 
 fpslabel.Name = "fpslabel"
 fpslabel.Parent = MadeByMTXTeam
-fpslabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+fpslabel.BackgroundColor3 = Color3.fromRGB(128, 0, 255)
 fpslabel.BackgroundTransparency = 1.000
 fpslabel.Position = UDim2.new(0.724226236, 0, 0.358796299, 0)
 fpslabel.Size = UDim2.new(0, 55, 0, 24)
 fpslabel.Font = Enum.Font.SourceSans
 fpslabel.Text = "this contact dev"
-fpslabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+fpslabel.TextColor3 = Color3.fromRGB(128, 0, 255)
 fpslabel.TextSize = 14.000
 
 uselesslabelthree.Name = "uselesslabelthree"
 uselesslabelthree.Parent = MadeByMTXTeam
-uselesslabelthree.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelthree.BackgroundColor3 = Color3.fromRGB(128, 0, 255)
 uselesslabelthree.BackgroundTransparency = 1.000
 uselesslabelthree.Position = UDim2.new(0.506917477, 0, 0.352585167, 0)
 uselesslabelthree.Size = UDim2.new(0, 26, 0, 24)
 uselesslabelthree.Font = Enum.Font.SourceSans
 uselesslabelthree.Text = "Fps: "
-uselesslabelthree.TextColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelthree.TextColor3 = Color3.fromRGB(128, 0, 255)
 uselesslabelthree.TextSize = 14.000
 
 pinglabel.Name = "pinglabel"
 pinglabel.Parent = MadeByMTXTeam
-pinglabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+pinglabel.BackgroundColor3 = Color3.fromRGB(128, 0, 255)
 pinglabel.BackgroundTransparency = 1.000
 pinglabel.Position = UDim2.new(0.20330891, 0, 0.371578127, 0)
 pinglabel.Size = UDim2.new(0, 55, 0, 24)
 pinglabel.Font = Enum.Font.SourceSans
 pinglabel.Text = "if you see this"
-pinglabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+pinglabel.TextColor3 = Color3.fromRGB(128, 0, 255)
 pinglabel.TextSize = 14.000
 pinglabel.TextWrapped = true
 
@@ -134,13 +134,13 @@ UICornerww.Parent = uselessframeone
 
 uselesslabelfour.Name = "uselesslabelfour"
 uselesslabelfour.Parent = MadeByMTXTeam
-uselesslabelfour.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelfour.BackgroundColor3 = Color3.fromRGB(128, 0, 255)
 uselesslabelfour.BackgroundTransparency = 1.000
 uselesslabelfour.Position = UDim2.new(0.0580285639, 0, 0.8125, 0)
 uselesslabelfour.Size = UDim2.new(0, 95, 0, 12)
 uselesslabelfour.Font = Enum.Font.SourceSans
 uselesslabelfour.Text = "Anti-Afk Auto Enabled"
-uselesslabelfour.TextColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelfour.TextColor3 = Color3.fromRGB(128, 0, 255)
 uselesslabelfour.TextSize = 14.000
 
 
