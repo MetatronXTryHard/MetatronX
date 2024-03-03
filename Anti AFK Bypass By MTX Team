@@ -1,1 +1,276 @@
-repeat wait()until game:IsLoaded()and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character;if getgenv().AntiAfkExecuted and thisoneissocoldww then getgenv().AntiAfkExecuted=false;getgenv().zamanbaslaticisi=false;game.CoreGui.thisoneissocoldww:Destroy()end;getgenv().AntiAfkExecuted=true;local thisoneissocoldww=Instance.new("ScreenGui")local a=Instance.new("Frame")local b=Instance.new("UICorner")local c=Instance.new("TextButton")local d=Instance.new("TextLabel")local e=Instance.new("TextLabel")local f=Instance.new("TextLabel")local g=Instance.new("TextLabel")local h=Instance.new("TextLabel")local i=Instance.new("TextLabel")local j=Instance.new("Frame")local k=Instance.new("UICorner")local l=Instance.new("TextLabel")thisoneissocoldww.Name="thisoneissocoldww"thisoneissocoldww.Parent=game.CoreGui;thisoneissocoldww.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;a.Name="MadeByMTXTeam"a.Parent=thisoneissocoldww;a.BackgroundColor3=Color3.fromRGB(30,30,30)a.Position=UDim2.new(0.0854133144,0,0.13128835,0)a.Size=UDim2.new(0,225,0,96)b.Name="UICornerw"b.Parent=a;c.Name="DestroyButton"c.Parent=a;c.BackgroundColor3=Color3.fromRGB(255,255,255)c.BackgroundTransparency=1.000;c.Position=UDim2.new(0.871702373,0,0.0245379955,0)c.Size=UDim2.new(0,27,0,15)c.Font=Enum.Font.SourceSans;c.Text="X"c.TextColor3=Color3.fromRGB(255,255,255)c.TextSize=14.000;c.MouseButton1Click:connect(function()getgenv().AntiAfkExecuted=false;wait(0.1)thisoneissocoldww:Destroy()end)d.Name="uselesslabelone"d.Parent=a;d.BackgroundColor3=Color3.fromRGB(255,255,255)d.BackgroundTransparency=1.000;d.Position=UDim2.new(0.302473009,0,0,0)d.Size=UDim2.new(0,95,0,24)d.Font=Enum.Font.SourceSans;d.Text="Anti Afk By MTX Team"d.TextColor3=Color3.fromRGB(255,255,255)d.TextSize=14.000;e.Name="timerlabel"e.Parent=a;e.BackgroundColor3=Color3.fromRGB(255,255,255)e.BackgroundTransparency=1.000;e.Position=UDim2.new(0.65344125,0,0.68194294,0)e.Size=UDim2.new(0,60,0,24)e.Font=Enum.Font.SourceSans;e.Text="0:0:0"e.TextColor3=Color3.fromRGB(255,255,255)e.TextSize=14.000;f.Name="uselesslabeltwo"f.Parent=a;f.BackgroundColor3=Color3.fromRGB(255,255,255)f.BackgroundTransparency=1.000;f.Position=UDim2.new(0.038864471,0,0.373806685,0)f.Size=UDim2.new(0,29,0,24)f.Font=Enum.Font.SourceSans;f.Text="Ping: "f.TextColor3=Color3.fromRGB(255,255,255)f.TextSize=14.000;g.Name="fpslabel"g.Parent=a;g.BackgroundColor3=Color3.fromRGB(255,255,255)g.BackgroundTransparency=1.000;g.Position=UDim2.new(0.724226236,0,0.358796299,0)g.Size=UDim2.new(0,55,0,24)g.Font=Enum.Font.SourceSans;g.Text="this contact dev"g.TextColor3=Color3.fromRGB(255,255,255)g.TextSize=14.000;h.Name="uselesslabelthree"h.Parent=a;h.BackgroundColor3=Color3.fromRGB(255,255,255)h.BackgroundTransparency=1.000;h.Position=UDim2.new(0.506917477,0,0.352585167,0)h.Size=UDim2.new(0,26,0,24)h.Font=Enum.Font.SourceSans;h.Text="Fps: "h.TextColor3=Color3.fromRGB(255,255,255)h.TextSize=14.000;i.Name="pinglabel"i.Parent=a;i.BackgroundColor3=Color3.fromRGB(255,255,255)i.BackgroundTransparency=1.000;i.Position=UDim2.new(0.20330891,0,0.371578127,0)i.Size=UDim2.new(0,55,0,24)i.Font=Enum.Font.SourceSans;i.Text="if you see this"i.TextColor3=Color3.fromRGB(255,255,255)i.TextSize=14.000;i.TextWrapped=true;j.Name="uselessframeone"j.Parent=a;j.BackgroundColor3=Color3.fromRGB(255,255,255)j.Position=UDim2.new(0.00444444455,0,0.243312627,0)j.Size=UDim2.new(0,224,0,5)k.CornerRadius=UDim.new(0,50)k.Name="UICornerww"k.Parent=j;l.Name="uselesslabelfour"l.Parent=a;l.BackgroundColor3=Color3.fromRGB(255,255,255)l.BackgroundTransparency=1.000;l.Position=UDim2.new(0.0580285639,0,0.8125,0)l.Size=UDim2.new(0,95,0,12)l.Font=Enum.Font.SourceSans;l.Text="Anti-Afk Auto Enabled"l.TextColor3=Color3.fromRGB(255,255,255)l.TextSize=14.000;local m=game.CoreGui.thisoneissocoldww.MadeByMTXTeam;gsCoreGui=game:GetService("CoreGui")gsTween=game:GetService("TweenService")local n=game:GetService("UserInputService")local o;local p;local q;local r;local function s(t)local u=t.Position-q;local v=0.04;local w={}w.Position=UDim2.new(r.X.Scale,r.X.Offset+u.X,r.Y.Scale,r.Y.Offset+u.Y)local x=gsTween:Create(m,TweenInfo.new(v,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),w)x:Play()end;m.InputBegan:Connect(function(t)if t.UserInputType==Enum.UserInputType.MouseButton1 or t.UserInputType==Enum.UserInputType.Touch then o=true;q=t.Position;r=m.Position;t.Changed:Connect(function()if t.UserInputState==Enum.UserInputState.End then o=false end end)end end)m.InputChanged:Connect(function(t)if t.UserInputType==Enum.UserInputType.MouseMovement or t.UserInputType==Enum.UserInputType.Touch then p=t end end)n.InputChanged:Connect(function(t)if t==p and o and m.Size then s(t)end end)local y=game:service'VirtualUser'game:service'Players'.LocalPlayer.Idled:connect(function()y:CaptureController()y:ClickButton2(Vector2.new())end)local z=g;local A=game:GetService("RunService")local B=A.RenderStepped;local C=nil;local D={}local function E()local F=tick()for G=#D,1,-1 do D[G+1]=D[G]>=F-1 and D[G]or nil end;D[1]=F;local H=tick()-C>=1 and#D or#D/(tick()-C)H=math.floor(H)g.Text=H end;C=tick()B:Connect(E)spawn(function()repeat wait(1)local I=tonumber(game:GetService("Stats"):FindFirstChild("PerformanceStats").Ping:GetValue())I=math.floor(I)i.Text=I until i==nil end)local J=0;local K=0;local L=0;getgenv().zamanbaslaticisi=true;while true do if getgenv().zamanbaslaticisi then J=J+1;wait(1)end;if J>=60 then J=0;K=K+1 end;if K>=60 then K=0;L=L+1 end;e.Text=L..":"..K..":"..J end;local M=game:GetService("VirtualUser")game:GetService("Players").LocalPlayer.Idled:connect(function()M:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)wait(1)M:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)end)warn("MTX Team ANTI AFK")
+repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+
+if getgenv().AntiAfkExecuted and thisoneissocoldww then 
+    getgenv().AntiAfkExecuted = false
+	getgenv().zamanbaslaticisi = false
+	game.CoreGui.thisoneissocoldww:Destroy()
+end
+
+getgenv().AntiAfkExecuted = true
+
+local thisoneissocoldww = Instance.new("ScreenGui")
+local MadeByMTXTeam = Instance.new("Frame")
+local UICornerw = Instance.new("UICorner")
+local DestroyButton = Instance.new("TextButton")
+local uselesslabelone = Instance.new("TextLabel")
+local timerlabel = Instance.new("TextLabel")
+local uselesslabeltwo = Instance.new("TextLabel")
+local fpslabel = Instance.new("TextLabel")
+local uselesslabelthree = Instance.new("TextLabel")
+local pinglabel = Instance.new("TextLabel")
+local uselessframeone = Instance.new("Frame")
+local UICornerww = Instance.new("UICorner")
+local uselesslabelfour = Instance.new("TextLabel")
+
+--Properties:
+
+thisoneissocoldww.Name = "thisoneissocoldww"
+thisoneissocoldww.Parent = game.CoreGui
+thisoneissocoldww.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MadeByMTXTeam.Name = "MadeByMTXTeam"
+MadeByMTXTeam.Parent = thisoneissocoldww
+MadeByMTXTeam.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MadeByMTXTeam.Position = UDim2.new(0.0854133144, 0, 0.13128835, 0)
+MadeByMTXTeam.Size = UDim2.new(0, 225, 0, 96)
+
+UICornerw.Name = "UICornerw"
+UICornerw.Parent = MadeByMTXTeam
+
+DestroyButton.Name = "DestroyButton"
+DestroyButton.Parent = MadeByMTXTeam
+DestroyButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DestroyButton.BackgroundTransparency = 1.000
+DestroyButton.Position = UDim2.new(0.871702373, 0, 0.0245379955, 0)
+DestroyButton.Size = UDim2.new(0, 27, 0, 15)
+DestroyButton.Font = Enum.Font.SourceSans
+DestroyButton.Text = "X"
+DestroyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+DestroyButton.TextSize = 14.000
+
+DestroyButton.MouseButton1Click:connect(function()
+	getgenv().AntiAfkExecuted = false
+	
+	wait(0.1)
+	thisoneissocoldww:Destroy()
+end)
+
+uselesslabelone.Name = "uselesslabelone"
+uselesslabelone.Parent = MadeByMTXTeam
+uselesslabelone.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelone.BackgroundTransparency = 1.000
+uselesslabelone.Position = UDim2.new(0.302473009, 0, 0, 0)
+uselesslabelone.Size = UDim2.new(0, 95, 0, 24)
+uselesslabelone.Font = Enum.Font.SourceSans
+uselesslabelone.Text = "Anti Afk By MTX Team"
+uselesslabelone.TextColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelone.TextSize = 14.000
+
+timerlabel.Name = "timerlabel"
+timerlabel.Parent = MadeByMTXTeam
+timerlabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+timerlabel.BackgroundTransparency = 1.000
+timerlabel.Position = UDim2.new(0.65344125, 0, 0.68194294, 0)
+timerlabel.Size = UDim2.new(0, 60, 0, 24)
+timerlabel.Font = Enum.Font.SourceSans
+timerlabel.Text = "0:0:0"
+timerlabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+timerlabel.TextSize = 14.000
+
+uselesslabeltwo.Name = "uselesslabeltwo"
+uselesslabeltwo.Parent = MadeByMTXTeam
+uselesslabeltwo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabeltwo.BackgroundTransparency = 1.000
+uselesslabeltwo.Position = UDim2.new(0.038864471, 0, 0.373806685, 0)
+uselesslabeltwo.Size = UDim2.new(0, 29, 0, 24)
+uselesslabeltwo.Font = Enum.Font.SourceSans
+uselesslabeltwo.Text = "Ping: "
+uselesslabeltwo.TextColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabeltwo.TextSize = 14.000
+
+fpslabel.Name = "fpslabel"
+fpslabel.Parent = MadeByMTXTeam
+fpslabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+fpslabel.BackgroundTransparency = 1.000
+fpslabel.Position = UDim2.new(0.724226236, 0, 0.358796299, 0)
+fpslabel.Size = UDim2.new(0, 55, 0, 24)
+fpslabel.Font = Enum.Font.SourceSans
+fpslabel.Text = "this contact dev"
+fpslabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+fpslabel.TextSize = 14.000
+
+uselesslabelthree.Name = "uselesslabelthree"
+uselesslabelthree.Parent = MadeByMTXTeam
+uselesslabelthree.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelthree.BackgroundTransparency = 1.000
+uselesslabelthree.Position = UDim2.new(0.506917477, 0, 0.352585167, 0)
+uselesslabelthree.Size = UDim2.new(0, 26, 0, 24)
+uselesslabelthree.Font = Enum.Font.SourceSans
+uselesslabelthree.Text = "Fps: "
+uselesslabelthree.TextColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelthree.TextSize = 14.000
+
+pinglabel.Name = "pinglabel"
+pinglabel.Parent = MadeByMTXTeam
+pinglabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+pinglabel.BackgroundTransparency = 1.000
+pinglabel.Position = UDim2.new(0.20330891, 0, 0.371578127, 0)
+pinglabel.Size = UDim2.new(0, 55, 0, 24)
+pinglabel.Font = Enum.Font.SourceSans
+pinglabel.Text = "if you see this"
+pinglabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+pinglabel.TextSize = 14.000
+pinglabel.TextWrapped = true
+
+uselessframeone.Name = "uselessframeone"
+uselessframeone.Parent = MadeByMTXTeam
+uselessframeone.BackgroundColor3 = Color3.fromRGB(255, 255, 2)
+uselessframeone.Position = UDim2.new(0.00444444455, 0, 0.243312627, 0)
+uselessframeone.Size = UDim2.new(0, 224, 0, 5)
+
+UICornerww.CornerRadius = UDim.new(0, 50)
+UICornerww.Name = "UICornerww"
+UICornerww.Parent = uselessframeone
+
+uselesslabelfour.Name = "uselesslabelfour"
+uselesslabelfour.Parent = MadeByMTXTeam
+uselesslabelfour.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelfour.BackgroundTransparency = 1.000
+uselesslabelfour.Position = UDim2.new(0.0580285639, 0, 0.8125, 0)
+uselesslabelfour.Size = UDim2.new(0, 95, 0, 12)
+uselesslabelfour.Font = Enum.Font.SourceSans
+uselesslabelfour.Text = "Anti-Afk Auto Enabled"
+uselesslabelfour.TextColor3 = Color3.fromRGB(255, 255, 255)
+uselesslabelfour.TextSize = 14.000
+
+
+
+local Drag = game.CoreGui.thisoneissocoldww.MadeByMTXTeam
+gsCoreGui = game:GetService("CoreGui")
+gsTween = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local dragging
+local dragInput
+local dragStart
+local startPos
+local function update(input)
+	local delta = input.Position - dragStart
+	local dragTime = 0.04
+	local SmoothDrag = {}
+	SmoothDrag.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	local dragSmoothFunction = gsTween:Create(Drag, TweenInfo.new(dragTime, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), SmoothDrag)
+	dragSmoothFunction:Play()
+end
+Drag.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = Drag.Position
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+Drag.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging and Drag.Size then
+		update(input)
+	end
+end)
+
+
+
+local bbbatusxxxddddd = game:service'VirtualUser'
+
+game:service'Players'.LocalPlayer.Idled:connect(function()
+	bbbatusxxxddddd:CaptureController()
+	bbbatusxxxddddd:ClickButton2(Vector2.new())
+end)
+
+
+
+
+local FPSsLabel = fpslabel
+local RunService = game:GetService("RunService")
+local RenderStepped = RunService.RenderStepped
+local sec = nil
+local FPS = {}
+
+local function fre()
+	local fr = tick()
+	for index = #FPS,1,-1 do
+		FPS[index + 1] = (FPS[index] >= fr - 1) and FPS[index] or nil
+	end
+	FPS[1] = fr
+	local fps = (tick() - sec >= 1 and #FPS) or (#FPS / (tick() - sec))
+	fps = math.floor(fps)
+	fpslabel.Text = fps
+end
+
+
+sec = tick()
+RenderStepped:Connect(fre)
+
+
+
+
+spawn(function()
+	repeat
+		wait(1)
+		local ping = tonumber(game:GetService("Stats"):FindFirstChild("PerformanceStats").Ping:GetValue())
+		ping = math.floor(ping)
+		pinglabel.Text = ping
+
+
+
+	until pinglabel == nil
+end)
+
+local saniye = 0
+
+
+
+local dakika = 0
+
+
+
+local saat = 0
+
+
+
+
+getgenv().zamanbaslaticisi = true
+
+while true do
+
+
+		if getgenv().zamanbaslaticisi then
+
+			saniye = saniye + 1
+
+			wait(1)
+
+		end --if zaman baslaticisi end
+
+
+		if saniye >= 60 then
+			saniye = 0
+			dakika = dakika + 1
+
+		end --if saniye 60 end
+
+
+		if dakika >= 60 then
+			dakika = 0
+			saat = saat + 1
+
+		end --if dakika 60 end
+
+		timerlabel.Text = saat..":"..dakika..":"..saniye
+	end
