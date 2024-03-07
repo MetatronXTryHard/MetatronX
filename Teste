@@ -1,143 +1,332 @@
 --[[
   loadstring(game:HttpGet("https://raw.githubusercontent.com/MetatronXTryHard/MetatronX/main/Teste"))()
 ]]
+-- mani is perfect
 
+local LocalPlayer = game:GetService('Players').LocalPlayer
+local ReplicatedStorage = game:GetService('ReplicatedStorage')
+local TweenService = game:GetService('TweenService')
+local RunService = game:GetService('RunService')
+local Lighting = game:GetService('Lighting')
+local Debris = game:GetService('Debris')
 
+local debris_folder = Instance.new('Folder', ReplicatedStorage)
+debris_folder.Name = 'debris_folder'
 
+local parried = false
 
-
-
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-local Window = Fluent:CreateWindow({
-  Title = "🥋 MTX Client | BrookHaven V2.5 👑 ",
-  SubTitle = "metatron_exe | MTX Team",
-  TabWidth = 160,
-  Size = UDim2.fromOffset(500, 320),
-  Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
-  Theme = "Amethyst",
-  MinimizeKey = Enum.KeyCode.G -- Used when theres no MinimizeKeybind
-})
-local Tabs = {
-  Main = Window:AddTab({ Title = "Main", Icon = "moon" }),
-  Settings = Window:AddTab({ Title = "Settings.", Icon = "settings" })
+local modules = {
+    main = loadstring(game:HttpGet('https://raw.githubusercontent.com/hashionsNew/Visualise/main/modules/main.lua'))(),
+    blade_ball = loadstring(game:HttpGet('https://raw.githubusercontent.com/hashionsNew/Visualise/main/modules/blade_ball_module.lua'))()
 }
-local Options = Fluent.Options
-InterfaceManager:SetLibrary(Fluent)
-InterfaceManager:SetFolder("FluentScriptHub")
-InterfaceManager:BuildInterfaceSection(Tabs.Settings)
-Window:SelectTab(1)
-Fluent:Notify({
-  Title = "MTX Client ❕",
-  Content = "Script Caregado...",
-  SubContent = "", -- Optional
-  Duration = 5 -- Set to nil to make the notification not disappear
-})
+
+local assets = {
+    atmosphere = Instance.new('Atmosphere', Lighting),
+    ambient = game:GetObjects('rbxassetid://15870529331')[1],
+    ball_reflection = game:GetObjects('rbxassetid://15872743417')[1],
+    kill_effects = {
+        cosmic_splash = game:GetObjects('rbxassetid://15872071996')[1]
+    },
+    debug_sphere = game:GetObjects('rbxassetid://15873671236')[1],
+    trail = game:GetObjects('rbxassetid://15878111905')[1],
+    jump_circle = {
+        orbs = game:GetObjects('rbxassetid://15878422854')[1]
+    }
+}
+
+assets.atmosphere.Color = Color3.fromRGB(75, 80, 106)
+assets.atmosphere.Decay = Color3.fromRGB(106, 112, 125)
+assets.atmosphere.Haze = 0
+
+assets.ambient.Position = Vector3.new(0, 10000, 0)
+assets.ambient.Parent = debris_folder
+
+assets.ball_reflection:MoveTo(Vector3.new(0, 10000, 0))
+assets.ball_reflection.Parent = debris_folder
+
+assets.kill_effects.cosmic_splash.Parent = debris_folder
+
+assets.debug_sphere.Position = Vector3.new(0, 10000, 0)
+assets.debug_sphere.Parent = debris_folder
+
+assets.trail.Parent = debris_folder
+
+assets.jump_circle.orbs.Parent = debris_folder
+
+local ui_library = loadstring(game:HttpGet('https://raw.githubusercontent.com/hashionsNew/Visualise/main/ui_library.lua'))()
+local main = ui_library.create()
+
+local combat_tab = main.create_tab({name = 'Rage'})
+combat_tab.create_label({name = 'AutoParry', section = 'left'})
 
 
-local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Infinity Jump", Default = false })
+local auto_parry_toggle = combat_tab.create_toggle({name = 'Enabled', flag = 'auto_parry', checkbox = false, section = 'left', callback = function(state: boolean)
+end})
 
-Toggle:OnChanged(function(value)
-  local InfiniteJumpEnabled = value
-  game:GetService("UserInputService").JumpRequest:connect(function()
-     if InfiniteJumpEnabled then
-        game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-     end
-     end)
+
+local auto_parry_accuracy_slider = combat_tab.create_slider({name = 'Accuracy', flag = 'auto_parry_accuracy', maximum = 100, minimum = 1, value = 100, section = 'left', callback = function(state: number)
+end})
+
+
+local world_tab = main.create_tab({name = 'World'})
+world_tab.create_label({name = 'WorldTime', section = 'left'})
+
+
+local world_time_toggle = world_tab.create_toggle({name = 'Enabled', flag = 'world_time', checkbox = false, section = 'left', callback = function(state: boolean)
+    if state then
+        TweenService:Create(Lighting, TweenInfo.new(0.5), {ClockTime = ui_library.flags['world_time_value']}):Play()
+    else
+        TweenService:Create(Lighting, TweenInfo.new(0.5), {ClockTime = 7}):Play()
+    end
+end})
+
+
+local world_time_value_slider = world_tab.create_slider({name = 'Time', flag = 'world_time_value', maximum = 12, minimum = 0, value = 0, section = 'left', callback = function(state: number)
+    TweenService:Create(Lighting, TweenInfo.new(0.5), {ClockTime = state}):Play()
+end})
+
+
+world_tab.create_label({name = 'Ambient', section = 'left'})
+
+
+local ambient_toggle = world_tab.create_toggle({name = 'Enabled', flag = 'ambient', checkbox = false, section = 'left', callback = function(state: boolean)
+    if not state then
+        assets.ambient.Position = Vector3.new(0, 10000, 0)
+        assets.ambient.Parent = debris_folder
+
+        TweenService:Create(assets.atmosphere, TweenInfo.new(0.5), {Haze = 0}):Play()
+        
+        return
+    end
+
+    assets.ambient.Parent = workspace
+    TweenService:Create(assets.atmosphere, TweenInfo.new(0.5), {Haze = 10}):Play()
+end})
+
+
+local atmosphere_slider = world_tab.create_slider({name = 'Atmosphere', flag = 'atmosphere', maximum = 1, minimum = 0, value = 0.6, section = 'left', callback = function(state: number)
+    TweenService:Create(assets.atmosphere, TweenInfo.new(0.5), {Density = state}):Play()
+end})
+
+
+world_tab.create_label({name = 'CustomBall', section = 'middle'})
+
+
+local custom_ball_toggle = world_tab.create_toggle({name = 'Enabled', flag = 'custom_ball', checkbox = false, section = 'middle', callback = function(state: boolean)
+    if not state then
+        assets.ball_reflection:MoveTo(Vector3.new(0, 10000, 0))
+        assets.ball_reflection.Parent = debris_folder
+
+        local ball = modules.blade_ball.get_ball(false)
+
+        if not ball then
+            return
+        end
+
+        ball.Transparency = 0
+
+        return
+    end
+
+    assets.ball_reflection.Parent = workspace
+end})
+
+
+world_tab.create_label({name = 'KillEffect', section = 'right'})
+
+
+local kill_effect_toggle = world_tab.create_toggle({name = 'Enabled', flag = 'kill_effect', checkbox = false, section = 'right', callback = function(state: boolean)
+end})
+
+
+world_tab.create_label({name = 'JumpCircle', section = 'right'})
+
+
+local jump_circle_toggle = world_tab.create_toggle({name = 'Enabled', flag = 'jump_circle', checkbox = false, section = 'right', callback = function(state: boolean)
+    if not state then
+        return
+    end
+end})
+
+
+RunService.Heartbeat:Connect(function()
+    if not ui_library.flags['auto_parry'] then
+        return
+    end
+
+    if not modules.main.alive(LocalPlayer) then
+        return
+    end
+
+    local ball = modules.blade_ball.get_ball(true)
+
+    if not ball then
+        return
+    end
+
+    local velocity = ball.zoomies.VectorVelocity
+    local distance = LocalPlayer:DistanceFromCharacter(ball.Position)
+    local ping = modules.main.ping() / 50
+    local player_hitbox = 10
+    local accuracy = player_hitbox + velocity.Magnitude / 3.5 + ping
+
+    --[[local sorted_players = {}
+
+    for _, v in workspace.Alive:GetChildren() do
+        if v.Name ~= LocalPlayer.Name then
+            table.insert(sorted_players, v)
+        end
+    end
+
+    if #sorted_players > 1 then
+        table.sort(sorted_players, function(player_0, player_1)
+            local player_0_distance = LocalPlayer:DistanceFromCharacter(player_0.HumanoidRootPart.Position)
+            local player_1_distance = LocalPlayer:DistanceFromCharacter(player_1.HumanoidRootPart.Position)
+
+            return player_0_distance > player_1_distance
+        end)
+    end
+
+    if LocalPlayer:DistanceFromCharacter(sorted_players[1].HumanoidRootPart.Position) <= spam_distance then
+        modules.blade_ball.parry(nil, true)
+
+        print('spamming')
+
+        return
+    end]]
+
+    if parried then
+        return
+    end
+
+    if distance <= accuracy and ball:GetAttribute('target') == LocalPlayer.Name then
+        modules.blade_ball.parry(nil, false)
+        parried = true
+    
+        ball:GetAttributeChangedSignal('target'):Connect(function()
+            parried = false
+        end)
+    
+        local last_parry = tick()
+    
+        task.spawn(function()
+            repeat
+                RunService.Heartbeat:Wait()
+            until (tick() - last_parry) >= 2 or not parried
+    
+            parried = false
+        end)
+    end
 end)
 
-local Slider = Tabs.Main:AddSlider("Slider", {
-  Title = "Walk speed",
-  Description = "",
-  Default = 16,
-  Min = 16,
-  Max = 200,
-  Rounding = 1,
-  Callback = function(value)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
-  end
-})
-local Slider = Tabs.Main:AddSlider("Slider", {
-  Title = "Jump speed",
-  Description = "",
-  Default = 50,
-  Min = 50,
-  Max = 200,
-  Rounding = 1,
-  Callback = function(value)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
-  end
-})
--- Botao Para mobile suport
-local CheckMobile = function()
-  if
-      game:GetService("UserInputService").TouchEnabled
-   then
-      return true 
-  end
-end 
-IsMobile = CheckMobile()
-local UserInputService = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local GuiService = game:GetService("GuiService")
-local screenResolution = GuiService:GetScreenResolution()
-local screenWidth = screenResolution.X
-local screenHeight = screenResolution.Y
-local windowWidth = screenWidth * 0.6
-local windowHeight = screenHeight * 0.6
--- UDim2.fromOffset(500, 200),
-if not IsMobile then 
-  windowWidth,windowHeight = 500,200
-else
-  local ClickButton = Instance.new("ScreenGui")
-  local MainFrame = Instance.new("Frame")
-  local ImageLabel = Instance.new("ImageLabel")
-  local TextButton = Instance.new("TextButton") 
-  local UICorner = Instance.new("UICorner") 
-  local UICorner_2 = Instance.new("UICorner")
-  if game.CoreGui:FindFirstChild("ClickButton") then 
-      game.CoreGui:FindFirstChild("ClickButton"):Destroy()
-  end
-  ClickButton.Name = "ClickButton"
-  ClickButton.Parent = game.CoreGui
-  ClickButton.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-  MainFrame.Name = "MainFrame"
-  MainFrame.Parent = ClickButton
-  MainFrame.Active = true
-  MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-  MainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
-  MainFrame.BorderColor3 = Color3.new(0, 0, 0)
-  MainFrame.BorderSizePixel = 0
-  MainFrame.Transparency = 1
-  MainFrame.Position = UDim2.new(0.187441245, 0, 0.476932675, 0)
-  MainFrame.Size = UDim2.new(0, 45, 0, 45)
-  UICorner.CornerRadius = UDim.new(0, 100)
-  UICorner.Parent = MainFrame
-  UICorner_2.CornerRadius = UDim.new(0, 100)
-  UICorner_2.Parent = ImageLabel
-  ImageLabel.Parent = MainFrame
-  ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-  ImageLabel.BackgroundColor3 = Color3.new(0, 0, 0)
-  ImageLabel.BorderColor3 = Color3.new(0, 0, 0)
-  ImageLabel.BorderSizePixel = 0
-  ImageLabel.Position = UDim2.new(0.48888889, 0, 0.48888889, 0)
-  ImageLabel.Size = UDim2.new(0, 45, 0, 45)
-  ImageLabel.Image = "rbxassetid://16550588402"
-  TextButton.Parent = MainFrame
-  TextButton.BackgroundColor3 = Color3.new(1, 1, 1)
-  TextButton.BackgroundTransparency = 1
-  TextButton.BorderColor3 = Color3.new(0, 0, 0)
-  TextButton.BorderSizePixel = 0
-  TextButton.Position = UDim2.new(3.3908421e-07, 0, 0, 0)
-  TextButton.Size = UDim2.new(0, 45, 0, 45)
-  TextButton.AutoButtonColor = false
-  TextButton.Font = Enum.Font.SourceSans
-  TextButton.Text = "MTX"
-  TextButton.TextColor3 = Color3.new(255, 255, 255)
-  TextButton.TextSize = 15
-  TextButton.MouseButton1Click:Connect(function()
-    Fluent.Window:Minimize()
-  end)
+
+RunService.RenderStepped:Connect(function()
+    if ui_library.flags['custom_ball'] then
+        local ball = modules.blade_ball.get_ball(false)
+
+        if not ball then
+            return
+        end
+
+        for _, v in workspace.Balls:GetChildren() do
+            local hightlight = v:FindFirstChildOfClass('Highlight')
+
+            if hightlight then
+                hightlight:Destroy()
+            end
+        end
+
+        ball.Transparency = 1
+        assets.ball_reflection:MoveTo(ball.Position)
+    end
+
+    if not modules.main.alive(LocalPlayer) then
+        return
+    end
+
+    if ui_library.flags['ambient'] then
+        assets.ambient.Position = LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 60, 0)
+    end
+end)
+
+
+for _, v in game:GetService('Players'):GetPlayers() do
+    if not modules.main.alive(v) then
+        return
+    end
+
+    v.Character.Humanoid.Died:Connect(function()
+        if not ui_library.flags['kill_effect'] then
+            return
+        end
+
+        local kill_effect = assets.kill_effects.cosmic_splash.main:Clone()
+        kill_effect.Parent = v.Character.HumanoidRootPart
+
+        for _, particle in kill_effect:GetChildren() do
+            if particle:IsA('ParticleEmitter') then
+                particle:Emit(particle:GetAttribute('EmitCount'))
+            end
+        end
+    end)
 end
+
+
+game:GetService('Players').PlayerAdded:Connect(function(player: Player)
+    if player == LocalPlayer then
+        return
+    end
+
+    player.CharacterAdded:Connect(function(character: any)
+        repeat
+            task.wait()
+        until modules.main.alive(player) or character == nil
+
+        character.Humanoid.Died:Connect(function()
+            if not ui_library.flags['kill_effect'] then
+                return
+            end
+
+            local kill_effect = assets.kill_effects.cosmic_splash.main:Clone()
+            kill_effect.Parent = character.HumanoidRootPart
+    
+            for _, particle in kill_effect:GetChildren() do
+                if particle:IsA('ParticleEmitter') then
+                    particle:Emit(particle:GetAttribute('EmitCount'))
+                end
+            end
+        end)
+    end)
+end)
+
+
+LocalPlayer.CharacterAdded:Connect(function(character: any)
+    repeat
+        task.wait()
+    until modules.main.alive(LocalPlayer) or character == nil
+
+    character.Humanoid.Jumping:Connect(function()
+        local jump_circle = assets.jump_circle.orbs.Attachment:Clone()
+        jump_circle.Position = character.HumanoidRootPart.Position - Vector3.new(0, 3, 0)
+        jump_circle.Parent = workspace.Terrain
+        jump_circle.ParticleEmitter:Emit(50)
+
+        Debris:AddItem(jump_circle, 2)
+    end)
+end)
+
+
+task.spawn(function()
+    repeat
+        task.wait()
+    until modules.main.alive(LocalPlayer)
+
+    LocalPlayer.Character.Humanoid.Jumping:Connect(function()
+        local jump_circle = assets.jump_circle.orbs.Attachment:Clone()
+        jump_circle.Position = LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(0, 3, 0)
+        jump_circle.Parent = workspace.Terrain
+        jump_circle.ParticleEmitter:Emit(50)
+
+        Debris:AddItem(jump_circle, 2)
+    end)
+end)
