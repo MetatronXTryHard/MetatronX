@@ -32,7 +32,6 @@ function UpdateDevilChams()
         end)
     end
     end
-
     function UpdateDevilChams() 
         for i,v in pairs(game.Workspace:GetChildren()) do
             pcall(function()
